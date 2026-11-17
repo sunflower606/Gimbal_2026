@@ -51,6 +51,8 @@ void LinkProtocol_Send(const LinkPayload_t *payload)
         LinkProtocol_WriteInt16(frame, 6U, payload->offset_x);
         LinkProtocol_WriteUint16(frame, 8U, payload->distance_cm);
         frame[10] = (payload->detected != 0U) ? LINK_FLAG_DETECTED : 0U;
+        /* 蓝牙命令码：原样透传，循迹板负责边沿检测（只在 0->非0 时动作） */
+        frame[11] = payload->command;
     } else {
         /* 没有数据可发：偏角与偏差写 0，flags 不带 detected 位。
          * 注意仍然要发帧 —— 停发会让对端无法区分「没人」和「断线」。 */
@@ -58,9 +60,8 @@ void LinkProtocol_Send(const LinkPayload_t *payload)
         LinkProtocol_WriteInt16(frame, 6U, 0);
         LinkProtocol_WriteUint16(frame, 8U, 0U);
         frame[10] = 0U;
+        frame[11] = 0U;
     }
-
-    frame[11] = 0U;
 
     for (i = 0U; i < LINK_CHECKSUM_INDEX; i++) {
         checksum ^= frame[i];

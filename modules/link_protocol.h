@@ -21,7 +21,9 @@
  *   6-7    offset_x             int16，画面偏差 -100~+100（诊断用）
  *   8-9    distance_cm          uint16，0 = 未知（预留，将来接测距）
  *   10     flags                uint8，bit0 = 检测到人
- *   11     reserved             uint8，0
+ *   11     command              uint8，0 = 无命令 / 1 = mode1 / 2 = mode2 / 3 = stop
+ *                               （手机经蓝牙发给云台板的文本命令，转成命令码后随帧下发；
+ *                                 原来保留为 0，现在给命令用，长度不变）
  *   12     checksum             uint8，前 12 字节逐字节异或
  * ========================================================================== */
 
@@ -33,6 +35,7 @@ typedef struct {
     int16_t offset_x;           /* 画面水平偏差，-100 ~ +100 */
     uint16_t distance_cm;       /* 距离，单位 cm；0 = 未知 */
     uint8_t detected;           /* 1 = 检测到人 */
+    uint8_t command;            /* 0 = 无命令；1/2/3 = mode1/mode2/stop（见 bt_command.h） */
 } LinkPayload_t;
 
 /* 初始化链路的 BSP 串口 */

@@ -27,10 +27,12 @@ set(SOURCES
     bsp/bsp_servo_pwm.c
     bsp/bsp_soft_i2c.c
     bsp/bsp_uart_link.c
+    bsp/bsp_bt_uart.c
 
     modules/vision_protocol.c
     modules/gimbal_controller.c
     modules/oled.c
+    modules/bt_command.c
     modules/link_protocol.c
 
     application/gimbal_task.c

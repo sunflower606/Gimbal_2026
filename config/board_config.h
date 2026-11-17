@@ -37,7 +37,27 @@
  * ------------------------------------------------------------------------- */
 #define BOARD_LINK_UART                     USART1
 #define BOARD_LINK_UART_CLK                 RCC_APB2Periph_USART1
+#define BOARD_LINK_UART_IRQn                USART1_IRQn
+#define BOARD_LINK_UART_IRQHandler          USART1_IRQHandler
 #define BOARD_LINK_BAUDRATE                 115200U
+/* 接收缓冲：循迹板每 500 ms 一行约 110 字节，256 字节能容忍主循环卡顿 1 s。 */
+#define BOARD_LINK_RX_BUF_SIZE              256U
+
+/* ---------------------------------------------------------------- 蓝牙串口
+ * USART3 默认映射（PB10=TX / PB11=RX），115200-8-N-1。
+ * 本板把 USART1 收到的循迹板调试文本**原样转发**到这里，电脑用蓝牙虚拟串口看。
+ *
+ * 为什么发送也用中断：一行 110 字节 @115200 阻塞要 9.5 ms，而控制环周期只有
+ * 10 ms —— 阻塞发送会让舵机 PWM 更新晚一拍、肉眼可见抖动。改成 TXE 中断 + 环形
+ * 缓冲后，主循环只是把字节塞进队列（几十纳秒），真正搬运交给中断。
+ * ------------------------------------------------------------------------- */
+#define BOARD_BT_UART                       USART3
+#define BOARD_BT_UART_CLK                   RCC_APB1Periph_USART3
+#define BOARD_BT_UART_IRQn                  USART3_IRQn
+#define BOARD_BT_UART_IRQHandler            USART3_IRQHandler
+#define BOARD_BT_BAUDRATE                   115200U
+#define BOARD_BT_RX_BUF_SIZE                128U
+#define BOARD_BT_TX_BUF_SIZE                256U
 
 /* ------------------------------------------------------------------ 舵机 PWM
  * TIM1（挂在 APB2）：72 MHz / 72 = 1 MHz 计数，ARR = 20000 -> 20 ms 周期（50 Hz）

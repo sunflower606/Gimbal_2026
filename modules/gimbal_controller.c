@@ -245,8 +245,10 @@ int16_t GimbalController_GetYawDevTenthDeg(const GimbalController_t *ctrl)
         return 0;
     }
 
-    /* 相对正前方（上电中点）的偏角，放大 10 倍转成 0.1 度单位 */
-    dev_tenth = (ctrl->yaw_angle_deg - GIMBAL_YAW_HOME_DEG) * 10.0f;
+    /* 相对「摄像头正对车头」的偏角，放大 10 倍转成 0.1 度单位。
+     * 注意零点用的是 GIMBAL_CHASSIS_ZERO_DEG 而不是上电中点：
+     * 摄像头装歪时两者不等，用中点会导致底盘以为人一直偏，车绕着人打转。 */
+    dev_tenth = (ctrl->yaw_angle_deg - GIMBAL_CHASSIS_ZERO_DEG) * 10.0f;
 
     /* 四舍五入（不用 lroundf，避免为一个转换把 math.h 拉进控制链） */
     if (dev_tenth >= 0.0f) {

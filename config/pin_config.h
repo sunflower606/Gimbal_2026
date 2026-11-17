@@ -73,12 +73,34 @@
 
 /* ------------------------------------------------------------ 双板链路串口
  * 4 针排针：PA9 / PA10 / GND / 3V3，丝印标 TX RX（PA9=TX、PA10=RX）。
- * 只发不收：把「云台 yaw 偏角」发给循迹板的 PA10。
- * 板上另有 PA10(RX)，本工程只发不收，不配置。
+ * 两个方向各走一根线：
+ *   PA9 (TX) -> 循迹板 PA10：13 字节二进制帧，把云台 yaw 偏角送过去；
+ *   PA10(RX) <- 循迹板 PA9：循迹板每 500 ms 一行的调试文本（人类可读）。
+ * 本工程收到后**原样转发给蓝牙模块**，见下面的 BOARD_BT_* 段。
  * ------------------------------------------------------------------------- */
 #define BOARD_LINK_GPIO                     GPIOA
 #define BOARD_LINK_GPIO_CLK                 RCC_APB2Periph_GPIOA
-#define BOARD_LINK_TX_PIN                   GPIO_Pin_9      /* PA9 = USART1_TX */
+#define BOARD_LINK_TX_PIN                   GPIO_Pin_9      /* PA9  = USART1_TX */
+#define BOARD_LINK_RX_PIN                   GPIO_Pin_10     /* PA10 = USART1_RX */
+
+/* ---------------------------------------------------------------- 蓝牙串口
+ * 模块：JDY-31（经典蓝牙 SPP 透传，3.3~6 V 供电，逻辑 3.3 V）。
+ * 用途：把循迹板那路调试文本无线转发到电脑，省掉拖着长线跑车。
+ *
+ * 选 PB10/PB11 的理由：
+ *   1) 这两个脚在「闲置排针 A 组」上，正点原子板引出来了，可直接插杜邦线；
+ *   2) 它们正好是 **USART3 的默认映射**（USART3_TX=PB10、USART3_RX=PB11），
+ *      不需要任何 AFIO 重映射，代码简单、不占重映射表；
+ *   3) 不与舵机 TIM1(PA8/PA11)、K230 USART2(PA2/PA3)、链路 USART1(PA9/PA10)、
+ *      蜂鸣器(PB4) 冲突。
+ * 接线：PB10 -> 模块 RXD；PB11 <- 模块 TXD（可只接 RXD，预留反向控制）；
+ *       GND 共地；VCC 接 5V。
+ * ⚠️ 模块波特率必须改成 115200（出厂 9600），用 AT+BAUD8 改完断电重启。
+ * ------------------------------------------------------------------------- */
+#define BOARD_BT_GPIO                       GPIOB
+#define BOARD_BT_GPIO_CLK                   RCC_APB2Periph_GPIOB
+#define BOARD_BT_TX_PIN                     GPIO_Pin_10     /* PB10 = USART3_TX -> 模块 RXD */
+#define BOARD_BT_RX_PIN                     GPIO_Pin_11     /* PB11 = USART3_RX <- 模块 TXD */
 
 /* ------------------------------------------------------------------ 蜂鸣器
  * 3 针排针：3V3 / PB4 / GND。
@@ -101,10 +123,11 @@
 #define BOARD_OLED_SDA_PIN                  GPIO_Pin_13     /* PB13 = SDA */
 
 /* ---------------------------------------------------------------- 空闲引脚
- * 空闲（闲置排针 A 组）：PA4 PA5 PA6 PA7 PB0 PB1 PB10 PB11 PB7 PB8
+ * 空闲（闲置排针 A 组）：PA4 PA5 PA6 PA7 PB0 PB1 PB7 PB8
  * 空闲（闲置排针 B 组）：PA0 PA1 PB9 PB6 PB5 PA12 PB15 PB14 PB13 PB12
  *
  * 说明：
+ *   - PB10/PB11 已分给蓝牙（USART3），不再空闲。
  *   - PB12/PB13 虽在 B 组排针上，但上面已保留给 OLED 宏；真正接 OLED 之前
  *     先确认没有别的功能同时占用这两个脚。
  *   - PA13/PA14 是 SWDIO/SWCLK 调试口，PB2 是 BOOT1，均不要占用。

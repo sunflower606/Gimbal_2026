@@ -189,6 +189,16 @@ build CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj: C_COMPILER__Gimbal_202
   OBJECT_FILE_DIR = CMakeFiles\Gimbal_2026.dir\bsp
   TARGET_SUPPORT_DIR = CMakeFiles\Gimbal_2026.dir
 
+build CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj: C_COMPILER__Gimbal_2026_unscanned_Debug D$:/Microsoft$ VS$ code/Projects/LabProject_2026/Gimbal_2026/bsp/bsp_bt_uart.c || cmake_object_order_depends_target_Gimbal_2026
+  CONFIG = Debug
+  DEFINES = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+  DEP_FILE = CMakeFiles\Gimbal_2026.dir\bsp\bsp_bt_uart.c.obj.d
+  FLAGS = -g -std=gnu11 -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -Werror -ffunction-sections -fdata-sections
+  INCLUDES = -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Core/Inc" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Drivers/CMSIS" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Drivers/STM32F10x_StdPeriph_Driver/inc" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/System" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/bsp" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/modules" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/config" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/application"
+  OBJECT_DIR = CMakeFiles\Gimbal_2026.dir
+  OBJECT_FILE_DIR = CMakeFiles\Gimbal_2026.dir\bsp
+  TARGET_SUPPORT_DIR = CMakeFiles\Gimbal_2026.dir
+
 build CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj: C_COMPILER__Gimbal_2026_unscanned_Debug D$:/Microsoft$ VS$ code/Projects/LabProject_2026/Gimbal_2026/modules/vision_protocol.c || cmake_object_order_depends_target_Gimbal_2026
   CONFIG = Debug
   DEFINES = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
@@ -214,6 +224,16 @@ build CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj: C_COMPILER__Gimbal_2026_uns
   DEFINES = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
   DEP_FILE = CMakeFiles\Gimbal_2026.dir\modules\oled.c.obj.d
   FLAGS = -g -std=gnu11 -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -Werror -ffunction-sections -fdata-sections -Wno-missing-braces
+  INCLUDES = -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Core/Inc" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Drivers/CMSIS" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Drivers/STM32F10x_StdPeriph_Driver/inc" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/System" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/bsp" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/modules" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/config" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/application"
+  OBJECT_DIR = CMakeFiles\Gimbal_2026.dir
+  OBJECT_FILE_DIR = CMakeFiles\Gimbal_2026.dir\modules
+  TARGET_SUPPORT_DIR = CMakeFiles\Gimbal_2026.dir
+
+build CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj: C_COMPILER__Gimbal_2026_unscanned_Debug D$:/Microsoft$ VS$ code/Projects/LabProject_2026/Gimbal_2026/modules/bt_command.c || cmake_object_order_depends_target_Gimbal_2026
+  CONFIG = Debug
+  DEFINES = -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+  DEP_FILE = CMakeFiles\Gimbal_2026.dir\modules\bt_command.c.obj.d
+  FLAGS = -g -std=gnu11 -mcpu=cortex-m3 -mthumb -O0 -g3 -Wall -Wextra -Werror -ffunction-sections -fdata-sections
   INCLUDES = -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Core/Inc" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Drivers/CMSIS" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/Drivers/STM32F10x_StdPeriph_Driver/inc" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/System" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/bsp" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/modules" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/config" -I"D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/application"
   OBJECT_DIR = CMakeFiles\Gimbal_2026.dir
   OBJECT_FILE_DIR = CMakeFiles\Gimbal_2026.dir\modules
@@ -247,7 +267,7 @@ build CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj: C_COMPILER__Gimb
 #############################################
 # Link the executable Gimbal_2026.elf
 
-build Gimbal_2026.elf: C_EXECUTABLE_LINKER__Gimbal_2026_Debug CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj CMakeFiles/Gimbal_2026.dir/System/Delay.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+build Gimbal_2026.elf: C_EXECUTABLE_LINKER__Gimbal_2026_Debug CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj CMakeFiles/Gimbal_2026.dir/System/Delay.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
   CONFIG = Debug
   FLAGS = -g
   LINK_FLAGS = -mcpu=cortex-m3 -mthumb "-TD:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/STM32F103C8_FLASH.ld" -Wl,--gc-sections "-Wl,-Map=D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/build-cmake/Gimbal_2026.map" -Wl,--print-memory-usage -specs=nano.specs -specs=nosys.specs
