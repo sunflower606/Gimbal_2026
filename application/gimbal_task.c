@@ -99,6 +99,9 @@ void GimbalTask_Init(void)
 {
     uint32_t now_ms;
 
+    /* 0) 1 ms 时基：丢人超时、30 ms 链路发送节拍都依赖它，必须最先起来 */
+    Delay_Init();
+
     /* 1) 舵机 PWM 必须先初始化，后面的控制器初始化会立刻写 CCR */
     BSP_Servo_Init();
 
