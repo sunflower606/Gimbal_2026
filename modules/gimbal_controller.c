@@ -174,8 +174,29 @@ void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *fram
     /* ---------- 6. 角度累加 ----------
      * 画面 x（水平）-> yaw（左右旋转，270 度）
      * 画面 y（垂直）-> pitch（上下俯仰，180 度） */
-    ctrl->yaw_angle_deg += u_x * ctrl->deg_per_unit_x;
-    ctrl->pitch_angle_deg += u_y * ctrl->deg_per_unit_y;
+    /* 速率限幅：把每拍的角度增量夹住（2026-11-18 新增）。
+     * 不加这一层时，K230 一换框，u_x 会给出十几度的增量，云台瞬间甩头，
+     * 底盘收到的偏角也就跟着突跳，表现为小车「突然一个大转向」。 */
+    {
+        float dyaw = u_x * ctrl->deg_per_unit_x;
+        float dpitch = u_y * ctrl->deg_per_unit_y;
+        const float yaw_step = GIMBAL_YAW_RATE_MAX_DEG_S * ctrl->dt_s;
+        const float pitch_step = GIMBAL_PITCH_RATE_MAX_DEG_S * ctrl->dt_s;
+
+        if (dyaw > yaw_step) {
+            dyaw = yaw_step;
+        } else if (dyaw < -yaw_step) {
+            dyaw = -yaw_step;
+        }
+        if (dpitch > pitch_step) {
+            dpitch = pitch_step;
+        } else if (dpitch < -pitch_step) {
+            dpitch = -pitch_step;
+        }
+
+        ctrl->yaw_angle_deg += dyaw;
+        ctrl->pitch_angle_deg += dpitch;
+    }
 
     /* ---------- 7. 行程限幅 ----------
      * 顶到边界就停住。当前 Ki = 0，积分不会继续累加，因此不存在
