@@ -6,6 +6,11 @@
 #include "gimbal_config.h"
 #include "vision_config.h"
 
+/* 兜底触发必须比"判丢"更晚，否则一丢人就开始扫（太敏感） */
+#if (GIMBAL_SWEEP_TRIGGER_MS <= GIMBAL_LOSE_TIMEOUT_MS)
+#error "GIMBAL_SWEEP_TRIGGER_MS must be greater than GIMBAL_LOSE_TIMEOUT_MS"
+#endif
+
 /* ---------------------------------------------------------------- 内部工具 -- */
 
 /* 把 v 夹到 [lo, hi] */
@@ -79,6 +84,17 @@ void GimbalController_Init(GimbalController_t *ctrl)
     ctrl->last_error_y = 0.0f;
     ctrl->tracking = 0U;
 
+    /* 限位反向扫视状态（2026-11-19） */
+    ctrl->sweep_state = 0U;
+    ctrl->sweep_dir = 0;
+    ctrl->sweep_rounds = 0U;
+    ctrl->sweep_edge_ms = 0U;
+    ctrl->sweep_lost_ms = 0U;
+    ctrl->last_turn_dir = 0;
+    ctrl->boot_ms = 0U;
+    ctrl->vision_seen = 0U;
+    ctrl->target_seen = 0U;
+
     /* 角度先夹一次，保证 config 里写错行程也不会越界 */
     ctrl->yaw_angle_deg = GimbalController_Clamp(ctrl->yaw_angle_deg,
                                                  ctrl->yaw_min_deg, ctrl->yaw_max_deg);
@@ -118,6 +134,121 @@ void GimbalController_Output(const GimbalController_t *ctrl)
     GimbalController_ApplyOutput(ctrl);
 }
 
+/* ------------------------------------------------- 限位反向扫视（私有） -- */
+/**
+ * @brief 目标丢失时调用：顶到行程端点就往反方向扫，扫到另一端再折回。
+ *
+ * 只在「人已经看不到」时进入（调用方在 Update 的丢失分支里调用），
+ * 所以不会和正常跟踪打架。
+ *
+ * 状态机：
+ *   sweep_state == 0（待触发）
+ *       若 yaw 贴在端点 ±GIMBAL_SWEEP_EDGE_DEG 内 -> 累加 sweep_edge_ms
+ *       连续贴边达到 GIMBAL_SWEEP_CONFIRM_MS -> 进入扫视，方向朝"离开端点"
+ *       否则把计时清零（车身一晃就贴边不该触发）
+ *   sweep_state == 1（扫视中）
+ *       每拍转 GIMBAL_SWEEP_SPEED_DEG_S × dt_s
+ *       到达另一端 -> 单程数 +1 并换向
+ *       单程数达到 GIMBAL_SWEEP_PASSES -> 回上电中点并退出
+ */
+static void GimbalController_SweepStep(GimbalController_t *ctrl)
+{
+    const float step = GIMBAL_SWEEP_SPEED_DEG_S * ctrl->dt_s;
+
+    /* ---------------- 上电静默：两道闸门（2026-11-20） ----------------
+     * K230 上电要 5~15 s 才出第一帧，这段"无人可跟"的时间不能当成"人丢了"。 */
+    if (ctrl->boot_ms < (uint32_t)GIMBAL_BOOT_GRACE_MS) {
+        return;                     /* 闸门 1：上电保护窗口内不扫 */
+    }
+    if ((GIMBAL_SWEEP_NEED_TARGET != 0U) && (ctrl->target_seen == 0U)) {
+        return;                     /* 闸门 2：从没跟到过人，不存在"找人" */
+    }
+
+    /* ---------------- 待触发：两种触发条件 ---------------- */
+    if (ctrl->sweep_state == 0U) {
+        uint8_t at_edge = 0U;
+
+        /* 条件 A：贴在端点 ±EDGE 内（真被车身推到限位） */
+        if (ctrl->yaw_angle_deg <= (ctrl->yaw_min_deg + GIMBAL_SWEEP_EDGE_DEG)) {
+            ctrl->sweep_dir = 1;    /* 贴下限 -> 往角度增大方向找 */
+            at_edge = 1U;
+        } else if (ctrl->yaw_angle_deg >= (ctrl->yaw_max_deg - GIMBAL_SWEEP_EDGE_DEG)) {
+            ctrl->sweep_dir = -1;   /* 贴上限 -> 往角度减小方向找 */
+            at_edge = 1U;
+        }
+
+        if (at_edge != 0U) {
+            ctrl->sweep_edge_ms = (uint16_t)(ctrl->sweep_edge_ms + GIMBAL_CONTROL_PERIOD_MS);
+        } else {
+            ctrl->sweep_edge_ms = 0U;   /* 没贴边，计时作废 */
+            ctrl->sweep_dir = 0;
+        }
+
+        /* 条件 B：丢人累计时间（从"判定丢失"起算，加上判丢本身的
+         * GIMBAL_LOSE_TIMEOUT_MS 即"从最后一帧算起"）。
+         * 2026-11-20 新增：实测云台丢人后停在 239 度（离端点 28 度），
+         * 条件 A 永远不成立，扫视一次都没触发过。 */
+        if (ctrl->sweep_lost_ms > (uint16_t)(0xFFFFU - GIMBAL_CONTROL_PERIOD_MS)) {
+            ctrl->sweep_lost_ms = 0xFFFFU;
+        } else {
+            ctrl->sweep_lost_ms =
+                (uint16_t)(ctrl->sweep_lost_ms + GIMBAL_CONTROL_PERIOD_MS);
+        }
+
+        if ((ctrl->sweep_edge_ms >= GIMBAL_SWEEP_CONFIRM_MS) ||
+            (((uint32_t)ctrl->sweep_lost_ms + GIMBAL_LOSE_TIMEOUT_MS) >=
+             (uint32_t)GIMBAL_SWEEP_TRIGGER_MS)) {
+            /* 方向：优先延续丢失前的转动方向（人往哪边走就从哪边找）；
+             * 之前没在转就朝"离得远的那一端"扫，避免立刻折返。 */
+            if (ctrl->sweep_dir == 0) {
+                if (ctrl->last_turn_dir != 0) {
+                    ctrl->sweep_dir = ctrl->last_turn_dir;
+                } else {
+                    ctrl->sweep_dir =
+                        ((ctrl->yaw_angle_deg - ctrl->yaw_min_deg) <
+                         (ctrl->yaw_max_deg - ctrl->yaw_angle_deg)) ? 1 : -1;
+                }
+            }
+            /* 已经顶在某一端时只能往行程内侧走 */
+            if (ctrl->yaw_angle_deg >= (ctrl->yaw_max_deg - GIMBAL_SWEEP_EDGE_DEG)) {
+                ctrl->sweep_dir = -1;
+            } else if (ctrl->yaw_angle_deg <= (ctrl->yaw_min_deg + GIMBAL_SWEEP_EDGE_DEG)) {
+                ctrl->sweep_dir = 1;
+            }
+
+            ctrl->sweep_state = 1U;
+            ctrl->sweep_rounds = 0U;
+            ctrl->sweep_edge_ms = 0U;
+            ctrl->sweep_lost_ms = 0U;
+            return;
+        }
+        return;
+    }
+
+    /* ---------------------------- 扫视中 ---------------------------- */
+    ctrl->yaw_angle_deg += ((float)ctrl->sweep_dir * step);
+    ctrl->yaw_angle_deg = GimbalController_Clamp(ctrl->yaw_angle_deg,
+                                                 ctrl->yaw_min_deg, ctrl->yaw_max_deg);
+
+    /* 到达另一端（或已顶到端点）：算一个单程，折回 */
+    if ((ctrl->yaw_angle_deg <= ctrl->yaw_min_deg) ||
+        (ctrl->yaw_angle_deg >= ctrl->yaw_max_deg)) {
+        ctrl->sweep_rounds++;
+        ctrl->sweep_dir = (int8_t)(-ctrl->sweep_dir);
+
+        if (ctrl->sweep_rounds >= GIMBAL_SWEEP_PASSES) {
+            /* 扫够次数仍没看到人：回中点放弃，避免一直耗电/顶板 */
+            ctrl->yaw_angle_deg = GimbalController_Clamp(GIMBAL_YAW_HOME_DEG,
+                                                         ctrl->yaw_min_deg,
+                                                         ctrl->yaw_max_deg);
+            ctrl->sweep_state = 0U;
+            ctrl->sweep_dir = 0;
+            ctrl->sweep_rounds = 0U;
+            ctrl->sweep_edge_ms = 0U;
+        }
+    }
+}
+
 void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *frame)
 {
     float error_x;
@@ -129,15 +260,41 @@ void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *fram
         return;
     }
 
+    /* 上电计时（用于上电静默窗口）+ 记录摄像头是否已经在上发数据 */
+    if (ctrl->boot_ms < 0xFFFFFFFFUL) {
+        ctrl->boot_ms += (uint32_t)(ctrl->dt_s * 1000.0f + 0.5f);
+    }
+    if ((ctrl->vision_seen == 0U) && (Vision_HasReceivedFrame() != 0U)) {
+        ctrl->vision_seen = 1U;
+    }
+
     /* ---------- 1. 目标是否还在 ----------
      * 丢失时保持当前角度不动：不累加角度、不盲目乱转。
-     * 这样人短暂遮挡后重新出现，云台还在原位，能立刻接上。 */
+     * 这样人短暂遮挡后重新出现，云台还在原位，能立刻接上。
+     *
+     * 例外（2026-11-19）：如果云台正顶在行程端点（人已经转到看不到的方位），
+     * 保持不动就永远等不到人 —— 这时改成"顶到限位就往反方向扫"。 */
     if (Vision_IsTargetFresh((uint16_t)GIMBAL_LOSE_TIMEOUT_MS) == 0U || frame == NULL) {
         ctrl->tracking = 0U;
+        GimbalController_SweepStep(ctrl);
         GimbalController_ApplyOutput(ctrl);
         return;
     }
     ctrl->tracking = 1U;
+    ctrl->target_seen = 1U;         /* 曾经跟踪到人 -> 以后才允许扫视 */
+    ctrl->sweep_lost_ms = 0U;       /* 重新看到人：丢人计时清零 */
+
+    /* 重新看到人：立刻退出扫视并清掉历史，避免带着扫视期间的状态进 PID */
+    if (ctrl->sweep_state != 0U) {
+        ctrl->sweep_state = 0U;
+        ctrl->sweep_dir = 0;
+        ctrl->sweep_rounds = 0U;
+        ctrl->sweep_edge_ms = 0U;
+        ctrl->integ_x = 0.0f;
+        ctrl->integ_y = 0.0f;
+        ctrl->last_error_x = 0.0f;
+        ctrl->last_error_y = 0.0f;
+    }
 
     /* ---------- 2. 低通滤波 ----------
      * K230 约 30 ms 一帧、控制 10 ms 一拍，同一个偏移值会被连续用 3 拍。
@@ -192,6 +349,13 @@ void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *fram
             dpitch = pitch_step;
         } else if (dpitch < -pitch_step) {
             dpitch = -pitch_step;
+        }
+
+        /* 记下"丢失前最后往哪边转"，扫视起手方向优先沿用它 */
+        if (dyaw > 0.001f) {
+            ctrl->last_turn_dir = 1;
+        } else if (dyaw < -0.001f) {
+            ctrl->last_turn_dir = -1;
         }
 
         ctrl->yaw_angle_deg += dyaw;

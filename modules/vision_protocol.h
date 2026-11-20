@@ -59,6 +59,13 @@ VisionFrame_t Vision_GetFrame(void);
 uint8_t Vision_IsTargetFresh(uint16_t timeout_ms);
 
 /**
+ * @brief 是否收到过至少一帧校验通过的帧（不管有没有人）。
+ * @return 1 = 摄像头已经在上发数据；0 = 从未收到（摄像头没上电/没启动完）。
+ * @note 用于区分「摄像头还没起来」和「摄像头在工作但没看到人」。
+ */
+uint8_t Vision_HasReceivedFrame(void);
+
+/**
  * @brief 通过调试串口打印当前帧与统计信息（阻塞发送，约 5 ms，不要在控制高频路径调用）。
  */
 void Vision_PrintFrame(void);

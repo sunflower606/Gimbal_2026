@@ -1376,7 +1376,7 @@ Discarded input sections
  .debug_macro   0x00000000      0x103 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
  .debug_macro   0x00000000       0x6a CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
  .debug_macro   0x00000000      0x1df CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x00000000       0xa3 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x00000000       0xd4 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
  .group         0x00000000        0xc CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .group         0x00000000        0xc CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .group         0x00000000        0xc CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
@@ -1391,8 +1391,6 @@ Discarded input sections
  .text          0x00000000        0x0 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .data          0x00000000        0x0 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .bss           0x00000000        0x0 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .text.GimbalController_SetAngle
-                0x00000000       0x7e CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .text.GimbalController_Output
                 0x00000000       0x1e CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .debug_macro   0x00000000      0xad8 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
@@ -1404,7 +1402,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .debug_macro   0x00000000      0x1df CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .debug_macro   0x00000000      0x190 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .debug_macro   0x00000000       0xa3 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ .debug_macro   0x00000000       0xd4 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .debug_macro   0x00000000       0x58 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .group         0x00000000        0xc CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
  .group         0x00000000        0xc CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
@@ -1572,7 +1570,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .debug_macro   0x00000000       0x16 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .debug_macro   0x00000000      0x170 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .debug_macro   0x00000000       0xa3 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_macro   0x00000000       0xd4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .debug_macro   0x00000000       0x22 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .debug_macro   0x00000000       0x58 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .text          0x00000000      0x168 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_mulsf3.o)
@@ -1953,7 +1951,7 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
                 0x08000000                g_pfnVectors
                 0x0800010c                        . = ALIGN (0x4)
 
-.text           0x0800010c     0x3fa4
+.text           0x0800010c     0x47ec
                 0x0800010c                        . = ALIGN (0x4)
  *(.text)
  .text          0x0800010c      0x21c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
@@ -2267,282 +2265,297 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .text.Vision_GetFrame
                 0x080023ec       0x2c CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
                 0x080023ec                Vision_GetFrame
+ .text.Vision_HasReceivedFrame
+                0x08002418       0x20 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+                0x08002418                Vision_HasReceivedFrame
  .text.Vision_IsTargetFresh
-                0x08002418       0x48 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
-                0x08002418                Vision_IsTargetFresh
+                0x08002438       0x48 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+                0x08002438                Vision_IsTargetFresh
  .text.Vision_PrintFrame
-                0x08002460       0x68 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
-                0x08002460                Vision_PrintFrame
+                0x08002480       0x68 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+                0x08002480                Vision_PrintFrame
  .text.GimbalController_Clamp
-                0x080024c8       0x3a CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x080024e8       0x3a CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .text.GimbalController_ApplyDeadZone
-                0x08002502       0x50 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002522       0x50 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .text.GimbalController_ApplyOutput
-                0x08002552       0x24 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- *fill*         0x08002576        0x2 
+                0x08002572       0x24 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ *fill*         0x08002596        0x2 
  .text.GimbalController_Init
-                0x08002578      0x114 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x08002578                GimbalController_Init
+                0x08002598      0x15c CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002598                GimbalController_Init
+ .text.GimbalController_SetAngle
+                0x080026f4       0x7e CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x080026f4                GimbalController_SetAngle
+ *fill*         0x08002772        0x2 
+ .text.GimbalController_SweepStep
+                0x08002774      0x2d8 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .text.GimbalController_Update
-                0x0800268c      0x310 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x0800268c                GimbalController_Update
+                0x08002a4c      0x3fc CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002a4c                GimbalController_Update
  .text.GimbalController_GetYawDeg
-                0x0800299c       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x0800299c                GimbalController_GetYawDeg
+                0x08002e48       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002e48                GimbalController_GetYawDeg
  .text.GimbalController_GetPitchDeg
-                0x080029be       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x080029be                GimbalController_GetPitchDeg
+                0x08002e6a       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002e6a                GimbalController_GetPitchDeg
  .text.GimbalController_GetFilteredX
-                0x080029e0       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x080029e0                GimbalController_GetFilteredX
+                0x08002e8c       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002e8c                GimbalController_GetFilteredX
  .text.GimbalController_GetFilteredY
-                0x08002a02       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x08002a02                GimbalController_GetFilteredY
+                0x08002eae       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002eae                GimbalController_GetFilteredY
  .text.GimbalController_IsTracking
-                0x08002a24       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x08002a24                GimbalController_IsTracking
- *fill*         0x08002a46        0x2 
+                0x08002ed0       0x22 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002ed0                GimbalController_IsTracking
+ *fill*         0x08002ef2        0x2 
  .text.GimbalController_GetYawDevTenthDeg
-                0x08002a48       0xa4 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                0x08002a48                GimbalController_GetYawDevTenthDeg
+                0x08002ef4       0xa4 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x08002ef4                GimbalController_GetYawDevTenthDeg
  .text.OLED_I2C_Init
-                0x08002aec        0xc CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002aec                OLED_I2C_Init
+                0x08002f98        0xc CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08002f98                OLED_I2C_Init
  .text.OLED_I2C_Start
-                0x08002af8       0x20 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002af8                OLED_I2C_Start
+                0x08002fa4       0x20 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08002fa4                OLED_I2C_Start
  .text.OLED_I2C_Stop
-                0x08002b18       0x1a CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002b18                OLED_I2C_Stop
+                0x08002fc4       0x1a CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08002fc4                OLED_I2C_Stop
  .text.OLED_I2C_SendByte
-                0x08002b32       0x58 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002b32                OLED_I2C_SendByte
+                0x08002fde       0x58 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08002fde                OLED_I2C_SendByte
  .text.OLED_WriteCommand
-                0x08002b8a       0x2e CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002b8a                OLED_WriteCommand
+                0x08003036       0x2e CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08003036                OLED_WriteCommand
  .text.OLED_WriteData
-                0x08002bb8       0x2e CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002bb8                OLED_WriteData
+                0x08003064       0x2e CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08003064                OLED_WriteData
  .text.OLED_SetCursor
-                0x08002be6       0x46 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002be6                OLED_SetCursor
+                0x08003092       0x46 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08003092                OLED_SetCursor
  .text.OLED_Clear
-                0x08002c2c       0x46 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002c2c                OLED_Clear
- *fill*         0x08002c72        0x2 
+                0x080030d8       0x46 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x080030d8                OLED_Clear
+ *fill*         0x0800311e        0x2 
  .text.OLED_ShowChar
-                0x08002c74       0xb0 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002c74                OLED_ShowChar
+                0x08003120       0xb0 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08003120                OLED_ShowChar
  .text.OLED_ShowString
-                0x08002d24       0x4a CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002d24                OLED_ShowString
+                0x080031d0       0x4a CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x080031d0                OLED_ShowString
  .text.OLED_Pow
-                0x08002d6e       0x30 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002d6e                OLED_Pow
- *fill*         0x08002d9e        0x2 
+                0x0800321a       0x30 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x0800321a                OLED_Pow
+ *fill*         0x0800324a        0x2 
  .text.OLED_ShowNum
-                0x08002da0       0x7c CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002da0                OLED_ShowNum
+                0x0800324c       0x7c CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x0800324c                OLED_ShowNum
  .text.OLED_ShowSignedNum
-                0x08002e1c       0xa8 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002e1c                OLED_ShowSignedNum
+                0x080032c8       0xa8 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x080032c8                OLED_ShowSignedNum
  .text.OLED_Init
-                0x08002ec4       0xc8 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
-                0x08002ec4                OLED_Init
+                0x08003370       0xc8 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x08003370                OLED_Init
  .text.BtCommand_Upper
-                0x08002f8c       0x2a CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x08003438       0x2a CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
  .text.BtCommand_Equals
-                0x08002fb6       0x58 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- *fill*         0x0800300e        0x2 
+                0x08003462       0x58 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .text.BtCommand_StartsWith
+                0x080034ba       0x3c CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .text.BtCommand_ParseNumber
+                0x080034f6      0x156 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
  .text.BtCommand_Parse
-                0x08003010      0x10c CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x0800364c      0x190 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
  .text.BtCommand_Init
-                0x0800311c       0x20 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
-                0x0800311c                BtCommand_Init
+                0x080037dc       0x2c CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x080037dc                BtCommand_Init
  .text.BtCommand_Poll
-                0x0800313c       0xa0 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
-                0x0800313c                BtCommand_Poll
+                0x08003808       0xc4 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x08003808                BtCommand_Poll
  .text.BtCommand_ToString
-                0x080031dc       0x48 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
-                0x080031dc                BtCommand_ToString
+                0x080038cc       0x68 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x080038cc                BtCommand_ToString
  .text.LinkProtocol_WriteInt16
-                0x08003224       0x3c CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+                0x08003934       0x3c CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
  .text.LinkProtocol_WriteUint16
-                0x08003260       0x38 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+                0x08003970       0x38 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
  .text.LinkProtocol_Init
-                0x08003298        0xc CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
-                0x08003298                LinkProtocol_Init
+                0x080039a8        0xc CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+                0x080039a8                LinkProtocol_Init
  .text.LinkProtocol_Send
-                0x080032a4       0xda CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
-                0x080032a4                LinkProtocol_Send
- *fill*         0x0800337e        0x2 
+                0x080039b4       0xda CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+                0x080039b4                LinkProtocol_Send
+ *fill*         0x08003a8e        0x2 
  .text.GimbalTask_DrawLabels
-                0x08003380       0x50 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x08003a90       0x50 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .text.GimbalTask_RefreshDisplay
-                0x080033d0       0xd8 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x08003ae0       0xd8 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .text.GimbalTask_ForwardChassisText
-                0x080034a8       0x36 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- *fill*         0x080034de        0x2 
+                0x08003bb8       0x36 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ *fill*         0x08003bee        0x2 
  .text.GimbalTask_Init
-                0x080034e0       0x68 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
-                0x080034e0                GimbalTask_Init
+                0x08003bf0       0x68 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x08003bf0                GimbalTask_Init
  .text.GimbalTask_EchoCommand
-                0x08003548       0x44 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x08003c58       0x44 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .text.GimbalTask_EchoAngle
+                0x08003c9c       0xd4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .text.GimbalTask_Loop
-                0x0800358c      0x12c CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
-                0x0800358c                GimbalTask_Loop
+                0x08003d70      0x190 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x08003d70                GimbalTask_Loop
  .text.snprintf
-                0x080036b8       0x64 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-snprintf.o)
-                0x080036b8                sniprintf
-                0x080036b8                snprintf
- .text.sprintf  0x0800371c       0x44 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
-                0x0800371c                siprintf
-                0x0800371c                sprintf
+                0x08003f00       0x64 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-snprintf.o)
+                0x08003f00                sniprintf
+                0x08003f00                snprintf
+ .text.sprintf  0x08003f64       0x44 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sprintf.o)
+                0x08003f64                siprintf
+                0x08003f64                sprintf
  .text.__libc_init_array
-                0x08003760       0x48 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-init.o)
-                0x08003760                __libc_init_array
+                0x08003fa8       0x48 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-init.o)
+                0x08003fa8                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x080037a8        0x2 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-lock.o)
-                0x080037a8                __retarget_lock_acquire_recursive
+                0x08003ff0        0x2 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-lock.o)
+                0x08003ff0                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x080037aa        0x2 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-lock.o)
-                0x080037aa                __retarget_lock_release_recursive
- .text._free_r  0x080037ac       0x94 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-freer.o)
-                0x080037ac                _free_r
+                0x08003ff2        0x2 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-lock.o)
+                0x08003ff2                __retarget_lock_release_recursive
+ .text._free_r  0x08003ff4       0x94 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-freer.o)
+                0x08003ff4                _free_r
  .text.sbrk_aligned
-                0x08003840       0x44 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
+                0x08004088       0x44 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
  .text._malloc_r
-                0x08003884       0xf8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
-                0x08003884                _malloc_r
+                0x080040cc       0xf8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
+                0x080040cc                _malloc_r
  .text.__malloc_lock
-                0x0800397c        0xc D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mlock.o)
-                0x0800397c                __malloc_lock
+                0x080041c4        0xc D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mlock.o)
+                0x080041c4                __malloc_lock
  .text.__malloc_unlock
-                0x08003988        0xc D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mlock.o)
-                0x08003988                __malloc_unlock
+                0x080041d0        0xc D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mlock.o)
+                0x080041d0                __malloc_unlock
  .text.__ssputs_r
-                0x08003994       0xc0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
-                0x08003994                __ssputs_r
+                0x080041dc       0xc0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x080041dc                __ssputs_r
  .text._svfprintf_r
-                0x08003a54      0x1f0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
-                0x08003a54                _svfiprintf_r
-                0x08003a54                _svfprintf_r
+                0x0800429c      0x1f0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x0800429c                _svfiprintf_r
+                0x0800429c                _svfprintf_r
  .text._printf_common
-                0x08003c44       0xea D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
-                0x08003c44                _printf_common
- *fill*         0x08003d2e        0x2 
+                0x0800448c       0xea D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800448c                _printf_common
+ *fill*         0x08004576        0x2 
  .text._printf_i
-                0x08003d30      0x254 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
-                0x08003d30                _printf_i
- .text.memmove  0x08003f84       0x32 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
-                0x08003f84                memmove
- *fill*         0x08003fb6        0x2 
- .text._sbrk_r  0x08003fb8       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sbrkr.o)
-                0x08003fb8                _sbrk_r
- .text.memchr   0x08003fd8       0x1c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
-                0x08003fd8                memchr
- .text.memcpy   0x08003ff4       0x1c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
-                0x08003ff4                memcpy
+                0x08004578      0x254 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08004578                _printf_i
+ .text.memmove  0x080047cc       0x32 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memmove.o)
+                0x080047cc                memmove
+ *fill*         0x080047fe        0x2 
+ .text._sbrk_r  0x08004800       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-sbrkr.o)
+                0x08004800                _sbrk_r
+ .text.memchr   0x08004820       0x1c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memchr-stub.o)
+                0x08004820                memchr
+ .text.memcpy   0x0800483c       0x1c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-memcpy-stub.o)
+                0x0800483c                memcpy
  .text._realloc_r
-                0x08004010       0x5c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
-                0x08004010                _realloc_r
+                0x08004858       0x5c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reallocr.o)
+                0x08004858                _realloc_r
  .text._malloc_usable_size_r
-                0x0800406c       0x10 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
-                0x0800406c                _malloc_usable_size_r
- .text._sbrk    0x0800407c       0x1c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libnosys.a(sbrk.o)
-                0x0800407c                _sbrk
+                0x080048b4       0x10 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-msizer.o)
+                0x080048b4                _malloc_usable_size_r
+ .text._sbrk    0x080048c4       0x1c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libnosys.a(sbrk.o)
+                0x080048c4                _sbrk
  *(.glue_7)
- .glue_7        0x08004098        0x0 linker stubs
+ .glue_7        0x080048e0        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08004098        0x0 linker stubs
+ .glue_7t       0x080048e0        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08004098        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x080048e0        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x08004098        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
-                0x08004098                _init
- .init          0x0800409c        0x8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
+ .init          0x080048e0        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
+                0x080048e0                _init
+ .init          0x080048e4        0x8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x080040a4        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
-                0x080040a4                _fini
- .fini          0x080040a8        0x8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
-                0x080040b0                        . = ALIGN (0x4)
-                0x080040b0                        _etext = .
+ .fini          0x080048ec        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
+                0x080048ec                _fini
+ .fini          0x080048f0        0x8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
+                0x080048f8                        . = ALIGN (0x4)
+                0x080048f8                        _etext = .
 
-.vfp11_veneer   0x080040b0        0x0
- .vfp11_veneer  0x080040b0        0x0 linker stubs
+.vfp11_veneer   0x080048f8        0x0
+ .vfp11_veneer  0x080048f8        0x0 linker stubs
 
-.v4_bx          0x080040b0        0x0
- .v4_bx         0x080040b0        0x0 linker stubs
+.v4_bx          0x080048f8        0x0
+ .v4_bx         0x080048f8        0x0 linker stubs
 
-.iplt           0x080040b0        0x0
- .iplt          0x080040b0        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x080048f8        0x0
+ .iplt          0x080048f8        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x080040b0      0x6ec
-                0x080040b0                        . = ALIGN (0x4)
+.rodata         0x080048f8      0x71c
+                0x080048f8                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x080040b0       0x37 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- *fill*         0x080040e7        0x1 
- .rodata        0x080040e8       0x41 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- *fill*         0x08004129        0x3 
- .rodata        0x0800412c       0x38 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .rodata        0x080048f8       0x37 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ *fill*         0x0800492f        0x1 
+ .rodata        0x08004930       0x55 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ *fill*         0x08004985        0x3 
+ .rodata        0x08004988       0x52 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  *(.rodata*)
+ *fill*         0x080049da        0x2 
  .rodata.APBAHBPrescTable
-                0x08004164       0x10 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
+                0x080049dc       0x10 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
  .rodata.ADCPrescTable
-                0x08004174        0x4 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
+                0x080049ec        0x4 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
  .rodata.s_oled_font
-                0x08004178      0x5f0 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x080049f0      0x5f0 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
  .rodata._svfprintf_r.str1.1
-                0x08004768       0x33 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
+                0x08004fe0       0x33 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-svfprintf.o)
                                  0x11 (size before relaxing)
  .rodata._printf_i.str1.1
-                0x0800479b        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08005013        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-nano-vfprintf_i.o)
                                  0x22 (size before relaxing)
-                0x0800479c                        . = ALIGN (0x4)
- *fill*         0x0800479b        0x1 
+                0x08005014                        . = ALIGN (0x4)
+ *fill*         0x08005013        0x1 
 
-.ARM.extab      0x0800479c        0x0
-                0x0800479c                        . = ALIGN (0x4)
+.ARM.extab      0x08005014        0x0
+                0x08005014                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800479c                        . = ALIGN (0x4)
+                0x08005014                        . = ALIGN (0x4)
 
-.ARM            0x0800479c        0x0
-                0x0800479c                        . = ALIGN (0x4)
-                0x0800479c                        __exidx_start = .
+.ARM            0x08005014        0x0
+                0x08005014                        . = ALIGN (0x4)
+                0x08005014                        __exidx_start = .
  *(.ARM.exidx*)
-                0x0800479c                        __exidx_end = .
-                0x0800479c                        . = ALIGN (0x4)
+                0x08005014                        __exidx_end = .
+                0x08005014                        . = ALIGN (0x4)
 
-.preinit_array  0x0800479c        0x0
-                0x0800479c                        . = ALIGN (0x4)
-                0x0800479c                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08005014        0x0
+                0x08005014                        . = ALIGN (0x4)
+                0x08005014                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800479c                        PROVIDE (__preinit_array_end = .)
-                0x0800479c                        . = ALIGN (0x4)
+                0x08005014                        PROVIDE (__preinit_array_end = .)
+                0x08005014                        . = ALIGN (0x4)
 
-.init_array     0x0800479c        0x4
-                0x0800479c                        . = ALIGN (0x4)
-                0x0800479c                        PROVIDE (__init_array_start = .)
+.init_array     0x08005014        0x4
+                0x08005014                        . = ALIGN (0x4)
+                0x08005014                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0800479c        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
-                0x080047a0                        PROVIDE (__init_array_end = .)
-                0x080047a0                        . = ALIGN (0x4)
+ .init_array    0x08005014        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+                0x08005018                        PROVIDE (__init_array_end = .)
+                0x08005018                        . = ALIGN (0x4)
 
-.fini_array     0x080047a0        0x4
-                0x080047a0                        . = ALIGN (0x4)
-                0x080047a0                        PROVIDE (__fini_array_start = .)
+.fini_array     0x08005018        0x4
+                0x08005018                        . = ALIGN (0x4)
+                0x08005018                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080047a0        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
-                0x080047a4                        PROVIDE (__fini_array_end = .)
-                0x080047a4                        . = ALIGN (0x4)
-                0x080047a4                        _sidata = LOADADDR (.data)
+ .fini_array    0x08005018        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+                0x0800501c                        PROVIDE (__fini_array_end = .)
+                0x0800501c                        . = ALIGN (0x4)
+                0x0800501c                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x080047a4        0x0
- .rel.iplt      0x080047a4        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x0800501c        0x0
+ .rel.iplt      0x0800501c        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.data           0x20000000       0x50 load address 0x080047a4
+.data           0x20000000       0x50 load address 0x0800501c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -2558,11 +2571,11 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
                 0x20000050                        . = ALIGN (0x4)
                 0x20000050                        _edata = .
 
-.igot.plt       0x20000050        0x0 load address 0x080047f4
+.igot.plt       0x20000050        0x0 load address 0x0800506c
  .igot.plt      0x20000050        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
                 0x20000050                        . = ALIGN (0x4)
 
-.bss            0x20000050      0x5a0 load address 0x080047f4
+.bss            0x20000050      0x5bc load address 0x0800506c
                 0x20000050                        _sbss = .
                 0x20000050                        __bss_start__ = _sbss
  *(.bss)
@@ -2596,55 +2609,58 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .bss.s_rx_tail
                 0x20000402        0x2 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
  .bss.s_frame   0x20000404       0x20 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .bss.s_line    0x20000424        0xc CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- .bss.s_len     0x20000430        0x1 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .bss.s_line    0x20000424       0x14 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .bss.s_len     0x20000438        0x1 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
  .bss.s_overflow
-                0x20000431        0x1 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- *fill*         0x20000432        0x2 
- .bss.s_gimbal  0x20000434       0x5c CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x20000439        0x1 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ *fill*         0x2000043a        0x2 
+ .bss.s_parse_arg
+                0x2000043c        0x4 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .bss.s_gimbal  0x20000440       0x6c CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .bss.s_last_display_ms
-                0x20000490        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x200004ac        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .bss.s_last_debug_ms
-                0x20000494        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x200004b0        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .bss.s_last_link_ms
-                0x20000498        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x200004b4        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .bss.s_display_frame_count
-                0x2000049c        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .bss.s_bt_cmd  0x200004a0        0x1 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x200004b8        0x4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .bss.s_bt_cmd  0x200004bc        0x1 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .bss.s_bt_hold
-                0x200004a1        0x1 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- *fill*         0x200004a2        0x2 
- .bss.__sf      0x200004a4      0x138 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-findfp.o)
-                0x200004a4                __sf
- .bss.errno     0x200005dc        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reent.o)
-                0x200005dc                errno
+                0x200004bd        0x1 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ *fill*         0x200004be        0x2 
+ .bss.__sf      0x200004c0      0x138 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-findfp.o)
+                0x200004c0                __sf
+ .bss.errno     0x200005f8        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-reent.o)
+                0x200005f8                errno
  .bss.__lock___malloc_recursive_mutex
-                0x200005e0        0x1 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-lock.o)
-                0x200005e0                __lock___malloc_recursive_mutex
- *fill*         0x200005e1        0x3 
+                0x200005fc        0x1 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-lock.o)
+                0x200005fc                __lock___malloc_recursive_mutex
+ *fill*         0x200005fd        0x3 
  .bss.__malloc_sbrk_start
-                0x200005e4        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
-                0x200005e4                __malloc_sbrk_start
+                0x20000600        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
+                0x20000600                __malloc_sbrk_start
  .bss.__malloc_free_list
-                0x200005e8        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
-                0x200005e8                __malloc_free_list
+                0x20000604        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libg_nano.a(libc_a-mallocr.o)
+                0x20000604                __malloc_free_list
  .bss.heap_end.0
-                0x200005ec        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libnosys.a(sbrk.o)
+                0x20000608        0x4 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libnosys.a(sbrk.o)
  *(COMMON)
-                0x200005f0                        . = ALIGN (0x4)
-                0x200005f0                        _ebss = .
-                0x200005f0                        __bss_end__ = _ebss
+                0x2000060c                        . = ALIGN (0x4)
+                0x2000060c                        _ebss = .
+                0x2000060c                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x200005f0      0x600 load address 0x080047f4
-                0x200005f0                        . = ALIGN (0x8)
-                0x200005f0                        PROVIDE (end = .)
+                0x2000060c      0x604 load address 0x0800506c
+                0x20000610                        . = ALIGN (0x8)
+ *fill*         0x2000060c        0x4 
+                0x20000610                        PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
-                0x200007f0                        . = (. + _Min_Heap_Size)
- *fill*         0x200005f0      0x200 
-                0x20000bf0                        . = (. + _Min_Stack_Size)
- *fill*         0x200007f0      0x400 
-                0x20000bf0                        . = ALIGN (0x8)
+                0x20000810                        . = (. + _Min_Heap_Size)
+ *fill*         0x20000610      0x200 
+                0x20000c10                        . = (. + _Min_Stack_Size)
+ *fill*         0x20000810      0x400 
+                0x20000c10                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2837,7 +2853,7 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .comment       0x00000039        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp\libnosys.a(sbrk.o)
                                  0x3a (size before relaxing)
 
-.debug_line     0x00000000     0xa582
+.debug_line     0x00000000     0xa99d
  .debug_line    0x00000000       0x78 CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
  .debug_line    0x00000078      0x3be CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_line    0x00000436      0x64e CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
@@ -2853,17 +2869,17 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_line    0x000064b4      0x681 CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
  .debug_line    0x00006b35      0x74e CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
  .debug_line    0x00007283      0x81c CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
- .debug_line    0x00007a9f      0x72b CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_line    0x000081ca      0x6e1 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .debug_line    0x000088ab      0x96a CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
- .debug_line    0x00009215      0x508 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- .debug_line    0x0000971d      0x40c CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
- .debug_line    0x00009b29      0x6d9 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .debug_line    0x0000a202      0x103 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
- .debug_line    0x0000a305      0x123 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
- .debug_line    0x0000a428       0x9a D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
- .debug_line    0x0000a4c2       0x62 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
- .debug_line    0x0000a524       0x5e D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+ .debug_line    0x00007a9f      0x753 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_line    0x000081f2      0x8a4 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ .debug_line    0x00008a96      0x96a CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+ .debug_line    0x00009400      0x69d CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .debug_line    0x00009a9d      0x40c CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+ .debug_line    0x00009ea9      0x774 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_line    0x0000a61d      0x103 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+ .debug_line    0x0000a720      0x123 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .debug_line    0x0000a843       0x9a D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .debug_line    0x0000a8dd       0x62 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
+ .debug_line    0x0000a93f       0x5e D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
 
 .debug_line_str
                 0x00000000      0x21e
@@ -2886,7 +2902,7 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
                 0x0000021e        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
                                 0x187 (size before relaxing)
 
-.debug_info     0x00000000     0x8140
+.debug_info     0x00000000     0x84f1
  .debug_info    0x00000000       0x30 CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
  .debug_info    0x00000030       0xbd CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_info    0x000000ed       0xf1 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
@@ -2902,19 +2918,19 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_info    0x0000514b      0x2d8 CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
  .debug_info    0x00005423      0x767 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
  .debug_info    0x00005b8a      0x869 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
- .debug_info    0x000063f3      0x450 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_info    0x00006843      0x5d9 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .debug_info    0x00006e1c      0x4a7 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
- .debug_info    0x000072c3      0x263 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- .debug_info    0x00007526      0x243 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
- .debug_info    0x00007769      0x763 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .debug_info    0x00007ecc       0xca D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
- .debug_info    0x00007f96       0x57 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
- .debug_info    0x00007fed       0xdb D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
- .debug_info    0x000080c8       0x3c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
- .debug_info    0x00008104       0x3c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+ .debug_info    0x000063f3      0x464 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_info    0x00006857      0x6c3 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ .debug_info    0x00006f1a      0x4a7 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+ .debug_info    0x000073c1      0x397 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .debug_info    0x00007758      0x243 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+ .debug_info    0x0000799b      0x8e2 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_info    0x0000827d       0xca D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+ .debug_info    0x00008347       0x57 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .debug_info    0x0000839e       0xdb D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .debug_info    0x00008479       0x3c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
+ .debug_info    0x000084b5       0x3c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
 
-.debug_abbrev   0x00000000     0x20ef
+.debug_abbrev   0x00000000     0x2137
  .debug_abbrev  0x00000000       0x24 CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
  .debug_abbrev  0x00000024       0x87 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_abbrev  0x000000ab       0x47 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
@@ -2930,19 +2946,19 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_abbrev  0x000010bd      0x15c CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
  .debug_abbrev  0x00001219      0x217 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
  .debug_abbrev  0x00001430      0x250 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
- .debug_abbrev  0x00001680      0x1db CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_abbrev  0x0000185b      0x1cf CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .debug_abbrev  0x00001a2a      0x159 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
- .debug_abbrev  0x00001b83      0x18a CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- .debug_abbrev  0x00001d0d      0x15b CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
- .debug_abbrev  0x00001e68      0x1bf CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .debug_abbrev  0x00002027       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
- .debug_abbrev  0x0000204f       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
- .debug_abbrev  0x00002077       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
- .debug_abbrev  0x0000209f       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
- .debug_abbrev  0x000020c7       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+ .debug_abbrev  0x00001680      0x1dc CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_abbrev  0x0000185c      0x1ef CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ .debug_abbrev  0x00001a4b      0x159 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+ .debug_abbrev  0x00001ba4      0x1af CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .debug_abbrev  0x00001d53      0x15b CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+ .debug_abbrev  0x00001eae      0x1c1 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_abbrev  0x0000206f       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+ .debug_abbrev  0x00002097       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .debug_abbrev  0x000020bf       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .debug_abbrev  0x000020e7       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
+ .debug_abbrev  0x0000210f       0x28 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
 
-.debug_aranges  0x00000000      0xb60
+.debug_aranges  0x00000000      0xb88
  .debug_aranges
                 0x00000000       0x28 CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
  .debug_aranges
@@ -2974,84 +2990,84 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_aranges
                 0x00000820       0x68 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
  .debug_aranges
-                0x00000888       0x58 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+                0x00000888       0x60 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
  .debug_aranges
-                0x000008e0       0x80 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x000008e8       0x88 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .debug_aranges
-                0x00000960       0x98 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x00000970       0x98 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
  .debug_aranges
-                0x000009f8       0x48 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x00000a08       0x58 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
  .debug_aranges
-                0x00000a40       0x38 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+                0x00000a60       0x38 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
  .debug_aranges
-                0x00000a78       0x48 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x00000a98       0x50 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
  .debug_aranges
-                0x00000ac0       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+                0x00000ae8       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
  .debug_aranges
-                0x00000ae0       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+                0x00000b08       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
  .debug_aranges
-                0x00000b00       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
+                0x00000b28       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
  .debug_aranges
-                0x00000b20       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
+                0x00000b48       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
  .debug_aranges
-                0x00000b40       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+                0x00000b68       0x20 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
 
-.debug_str      0x00000000    0x5535b
- .debug_str     0x00000000    0x5535b CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
+.debug_str      0x00000000    0x55586
+ .debug_str     0x00000000    0x55586 CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
                                  0xb3 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
-                               0x40ab (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
+                               0x416d (size before relaxing)
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
                               0x4d3f9 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj
                               0x4d51b (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj
                               0x4d607 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj
                               0x4d996 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
                               0x4df65 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj
                               0x4e0b1 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj
                               0x4dccf (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/System/Delay.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/System/Delay.c.obj
                               0x4d44c (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
                               0x4e4f7 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj
                               0x4df10 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
                               0x4dc47 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
                               0x4e48c (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
                               0x4e4ee (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
-                               0x79ba (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
-                               0x494b (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+                               0x7a94 (size before relaxing)
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                               0x4aca (size before relaxing)
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
                               0x4d5a1 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
-                               0x3ee0 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                               0x3f98 (size before relaxing)
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
                                0x42d8 (size before relaxing)
- .debug_str     0x0005535b        0x0 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
-                               0x7d85 (size before relaxing)
- .debug_str     0x0005535b        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+ .debug_str     0x00055586        0x0 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                               0x7f46 (size before relaxing)
+ .debug_str     0x00055586        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
                                 0x235 (size before relaxing)
- .debug_str     0x0005535b        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .debug_str     0x00055586        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
                                 0x1c1 (size before relaxing)
- .debug_str     0x0005535b        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .debug_str     0x00055586        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
                                 0x24a (size before relaxing)
- .debug_str     0x0005535b        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
+ .debug_str     0x00055586        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
                                 0x1ac (size before relaxing)
- .debug_str     0x0005535b        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+ .debug_str     0x00055586        0x0 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
                                 0x1b0 (size before relaxing)
 
 .debug_rnglists
-                0x00000000      0x7e2
+                0x00000000      0x812
  .debug_rnglists
                 0x00000000       0x19 CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj
  .debug_rnglists
@@ -3083,19 +3099,19 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_rnglists
                 0x000005ef       0x4b CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
  .debug_rnglists
-                0x0000063a       0x4d CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+                0x0000063a       0x53 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
  .debug_rnglists
-                0x00000687       0x5e CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+                0x0000068d       0x74 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
  .debug_rnglists
-                0x000006e5       0x71 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+                0x00000701       0x71 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
  .debug_rnglists
-                0x00000756       0x33 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+                0x00000772       0x40 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
  .debug_rnglists
-                0x00000789       0x26 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+                0x000007b2       0x26 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
  .debug_rnglists
-                0x000007af       0x33 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+                0x000007d8       0x3a CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
 
-.debug_macro    0x00000000    0x106a1
+.debug_macro    0x00000000    0x106d2
  .debug_macro   0x00000000       0x80 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_macro   0x00000080      0xad8 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_macro   0x00000b58       0x22 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
@@ -3104,85 +3120,85 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_macro   0x00000c59      0x103 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_macro   0x00000d5c       0x6a CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_macro   0x00000dc6      0x1df CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
- .debug_macro   0x00000fa5       0xa3 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
- .debug_macro   0x00001048      0x185 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x000011cd       0x56 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x00001223       0x22 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x00001245      0x69f CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x000018e4     0x7dbe CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x000096a2      0x2df CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x00009981      0x144 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x00009ac5      0x3cf CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x00009e94       0xc8 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x00009f5c      0x17a CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000a0d6       0xac CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000a182      0x3ad CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000a52f       0x9a CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000a5c9      0x2cf CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000a898      0x279 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000ab11      0x2ac CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000adbd      0x2b1 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000b06e       0x64 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000b0d2       0x82 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000b154      0x3e2 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000b536       0x58 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000b58e      0x341 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000b8cf      0x2c4 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000bb93      0x711 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000c2a4      0x220 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000c4c4       0x34 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000c4f8       0x8b CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000c583       0x35 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
- .debug_macro   0x0000c5b8      0x188 CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj
- .debug_macro   0x0000c740      0x18b CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj
- .debug_macro   0x0000c8cb       0x85 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj
- .debug_macro   0x0000c950      0x1d3 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj
- .debug_macro   0x0000cb23      0x2a6 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj
- .debug_macro   0x0000cdc9      0x2a1 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
- .debug_macro   0x0000d06a      0x3dc CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
- .debug_macro   0x0000d446      0x19d CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj
- .debug_macro   0x0000d5e3      0x70b CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj
- .debug_macro   0x0000dcee      0x239 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj
- .debug_macro   0x0000df27      0x21a CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj
- .debug_macro   0x0000e141      0x18b CMakeFiles/Gimbal_2026.dir/System/Delay.c.obj
- .debug_macro   0x0000e2cc      0x1a1 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
- .debug_macro   0x0000e46d      0x190 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
- .debug_macro   0x0000e5fd      0x6bd CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
- .debug_macro   0x0000ecba       0x94 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
- .debug_macro   0x0000ed4e       0xb8 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
- .debug_macro   0x0000ee06      0x198 CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj
- .debug_macro   0x0000ef9e      0x198 CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
- .debug_macro   0x0000f136      0x1a1 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
- .debug_macro   0x0000f2d7      0x1a1 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
- .debug_macro   0x0000f478      0x170 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f5e8       0x22 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f60a       0x7b CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f685       0x24 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f6a9       0x3c CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f6e5       0x34 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f719       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f72f       0x9e CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000f7cd      0x364 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fb31      0x112 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fc43       0x10 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fc53       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fc69       0x4a CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fcb3       0x34 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fce7       0x10 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fcf7       0x58 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000fd4f      0x1e5 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000ff34       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000ff4a       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x0000ff60      0x170 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x000100d0       0x58 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_macro   0x00010128       0xaf CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .debug_macro   0x000101d7      0x1a5 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
- .debug_macro   0x0001037c       0x7d CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- .debug_macro   0x000103f9       0xaa CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
- .debug_macro   0x000104a3      0x1c2 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .debug_macro   0x00010665       0x3c CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_macro   0x00000fa5       0xd4 CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
+ .debug_macro   0x00001079      0x185 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x000011fe       0x56 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x00001254       0x22 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x00001276      0x69f CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x00001915     0x7dbe CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x000096d3      0x2df CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x000099b2      0x144 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x00009af6      0x3cf CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x00009ec5       0xc8 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x00009f8d      0x17a CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000a107       0xac CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000a1b3      0x3ad CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000a560       0x9a CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000a5fa      0x2cf CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000a8c9      0x279 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000ab42      0x2ac CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000adee      0x2b1 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000b09f       0x64 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000b103       0x82 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000b185      0x3e2 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000b567       0x58 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000b5bf      0x341 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000b900      0x2c4 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000bbc4      0x711 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000c2d5      0x220 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000c4f5       0x34 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000c529       0x8b CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000c5b4       0x35 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
+ .debug_macro   0x0000c5e9      0x188 CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj
+ .debug_macro   0x0000c771      0x18b CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj
+ .debug_macro   0x0000c8fc       0x85 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/misc.c.obj
+ .debug_macro   0x0000c981      0x1d3 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj
+ .debug_macro   0x0000cb54      0x2a6 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj
+ .debug_macro   0x0000cdfa      0x2a1 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
+ .debug_macro   0x0000d09b      0x3dc CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_rcc.c.obj
+ .debug_macro   0x0000d477      0x19d CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj
+ .debug_macro   0x0000d614      0x70b CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj
+ .debug_macro   0x0000dd1f      0x239 CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj
+ .debug_macro   0x0000df58      0x21a CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_usart.c.obj
+ .debug_macro   0x0000e172      0x18b CMakeFiles/Gimbal_2026.dir/System/Delay.c.obj
+ .debug_macro   0x0000e2fd      0x1a1 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
+ .debug_macro   0x0000e49e      0x190 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
+ .debug_macro   0x0000e62e      0x6bd CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
+ .debug_macro   0x0000eceb       0x94 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
+ .debug_macro   0x0000ed7f       0xb8 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj
+ .debug_macro   0x0000ee37      0x198 CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj
+ .debug_macro   0x0000efcf      0x198 CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
+ .debug_macro   0x0000f167      0x1a1 CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
+ .debug_macro   0x0000f308      0x1a1 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
+ .debug_macro   0x0000f4a9      0x170 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f619       0x22 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f63b       0x7b CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f6b6       0x24 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f6da       0x3c CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f716       0x34 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f74a       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f760       0x9e CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000f7fe      0x364 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fb62      0x112 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fc74       0x10 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fc84       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fc9a       0x4a CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fce4       0x34 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fd18       0x10 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fd28       0x58 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000fd80      0x1e5 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000ff65       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000ff7b       0x16 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x0000ff91      0x170 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x00010101       0x58 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_macro   0x00010159       0xaf CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ .debug_macro   0x00010208      0x1a5 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+ .debug_macro   0x000103ad       0x7d CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .debug_macro   0x0001042a       0xaa CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+ .debug_macro   0x000104d4      0x1c2 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_macro   0x00010696       0x3c CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
 
-.debug_frame    0x00000000     0x2c68
+.debug_frame    0x00000000     0x2d28
  .debug_frame   0x00000000       0x2c CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj
  .debug_frame   0x0000002c       0xf0 CMakeFiles/Gimbal_2026.dir/Core/Src/stm32f10x_it.c.obj
  .debug_frame   0x0000011c       0x98 CMakeFiles/Gimbal_2026.dir/Drivers/CMSIS/system_stm32f10x.c.obj
@@ -3197,14 +3213,14 @@ LOAD D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1
  .debug_frame   0x0000200c       0x7c CMakeFiles/Gimbal_2026.dir/bsp/bsp_soft_i2c.c.obj
  .debug_frame   0x00002088       0xcc CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj
  .debug_frame   0x00002154      0x180 CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj
- .debug_frame   0x000022d4      0x140 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
- .debug_frame   0x00002414      0x200 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
- .debug_frame   0x00002614      0x248 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
- .debug_frame   0x0000285c       0xf4 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
- .debug_frame   0x00002950       0xa0 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
- .debug_frame   0x000029f0       0xe4 CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
- .debug_frame   0x00002ad4       0x4c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
- .debug_frame   0x00002b20       0x38 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
- .debug_frame   0x00002b58       0xc8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
- .debug_frame   0x00002c20       0x24 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
- .debug_frame   0x00002c44       0x24 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)
+ .debug_frame   0x000022d4      0x160 CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj
+ .debug_frame   0x00002434      0x228 CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj
+ .debug_frame   0x0000265c      0x248 CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj
+ .debug_frame   0x000028a4      0x144 CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj
+ .debug_frame   0x000029e8       0xa0 CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj
+ .debug_frame   0x00002a88      0x10c CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj
+ .debug_frame   0x00002b94       0x4c D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_addsubsf3.o)
+ .debug_frame   0x00002be0       0x38 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_muldivsf3.o)
+ .debug_frame   0x00002c18       0xc8 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_cmpsf2.o)
+ .debug_frame   0x00002ce0       0x24 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixsfsi.o)
+ .debug_frame   0x00002d04       0x24 D:/Microsoft VS code/stm32tools/@xpack-dev-tools/arm-none-eabi-gcc/15.2.1-1.1.1/.content/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp\libgcc.a(_arm_fixunssfsi.o)

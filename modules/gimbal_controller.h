@@ -61,6 +61,19 @@ typedef struct {
     float last_error_x;         /* 上一拍水平偏差（已过死区） */
     float last_error_y;         /* 上一拍垂直偏差（已过死区） */
     uint8_t tracking;           /* 1 = 正在跟踪；0 = 目标丢失 */
+
+    /* ------------------------- 限位反向扫视（2026-11-19，模式 1 兜底） ----
+     * 目标丢失且云台顶在行程端点时，以固定角速度朝反方向扫，直到重新看到人。
+     * 参数见 config/gimbal_config.h 的 GIMBAL_SWEEP_*。 */
+    uint8_t sweep_state;        /* 0 = 未扫视；1 = 扫视中 */
+    int8_t sweep_dir;           /* +1 = 朝 yaw 增大方向；-1 = 朝减小方向 */
+    uint8_t sweep_rounds;       /* 已完成的单程数 */
+    uint16_t sweep_edge_ms;     /* 连续贴限位的累计时间，单位 ms */
+    uint16_t sweep_lost_ms;     /* 判丢后累计时间，单位 ms（兜底触发用） */
+    int8_t last_turn_dir;       /* 丢失前最后一次转动方向：+1/-1/0 */
+    uint32_t boot_ms;           /* 上电后累计运行时间，ms（上电静默用） */
+    uint8_t vision_seen;        /* 1 = 收到过至少一帧（摄像头已上线） */
+    uint8_t target_seen;        /* 1 = 曾经成功跟踪到人（扫视前置条件） */
 } GimbalController_t;
 
 /**

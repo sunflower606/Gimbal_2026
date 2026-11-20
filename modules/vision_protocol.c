@@ -177,6 +177,11 @@ VisionFrame_t Vision_GetFrame(void)
     return s_frame;
 }
 
+uint8_t Vision_HasReceivedFrame(void)
+{
+    return (s_frame.frame_count > 0U) ? 1U : 0U;
+}
+
 uint8_t Vision_IsTargetFresh(uint16_t timeout_ms)
 {
     /* 先看有没有人：K230 未检测到人时会主动发丢失帧，这一条立即生效 */

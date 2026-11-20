@@ -147,6 +147,32 @@ static void GimbalTask_EchoCommand(BtCommand_t command)
     }
 }
 
+/* ------------------------------------------------ 内部：角度指令回执 ----
+ * 手机发 "yaw 200" 后回一行 "YAW:200.0 OK"。
+ *
+ * 只用手工拼整数与一位小数，不用 printf 的 %f：
+ * newlib-nano 默认不带浮点格式化，写 %f 既不显示又可能链接失败。
+ * --------------------------------------------------------------------- */
+static void GimbalTask_EchoAngle(BtCommand_t command, float angle_deg)
+{
+    char text[24];
+    int32_t tenth = (int32_t)((angle_deg * 10.0f) + ((angle_deg >= 0.0f) ? 0.5f : -0.5f));
+    int32_t whole = tenth / 10;
+    int32_t frac = tenth % 10;
+    int len;
+
+    if (frac < 0) {
+        frac = -frac;
+    }
+
+    len = snprintf(text, sizeof(text), "%s:%d.%d OK\r\n",
+                   (command == BT_CMD_YAW) ? "YAW" : "PITCH",
+                   (int)whole, (int)frac);
+    if (len > 0) {
+        (void)BSP_BT_SendBuffer((const uint8_t *)text, (uint16_t)len);
+    }
+}
+
 void GimbalTask_Loop(void)
 {
     VisionFrame_t frame;
@@ -156,12 +182,30 @@ void GimbalTask_Loop(void)
      * 独立于视觉链路：哪怕人丢了、云台在保持，命令也要能收到。
      * 解析出来的命令码只改 s_bt_cmd/s_bt_hold，真正的下发在下面第 5 步。 */
     {
-        BtCommand_t command = BtCommand_Poll();
+        BtCommandEvent_t event = BtCommand_Poll();
 
-        if (command != BT_CMD_NONE) {
-            s_bt_cmd = command;
+        if ((event.command == BT_CMD_YAW) || (event.command == BT_CMD_PITCH)) {
+            /* 手动摆位：直接把云台摆到指定角度，另一轴保持不动 */
+            float yaw_deg = GimbalController_GetYawDeg(&s_gimbal);
+            float pitch_deg = GimbalController_GetPitchDeg(&s_gimbal);
+
+            if (event.command == BT_CMD_YAW) {
+                yaw_deg = event.argument;
+            } else {
+                pitch_deg = event.argument;
+            }
+
+            GimbalController_SetAngle(&s_gimbal, yaw_deg, pitch_deg);
+
+            /* 回执要用「夹紧之后」的真实角度，所以重新读一次 */
+            GimbalTask_EchoAngle(event.command,
+                                 (event.command == BT_CMD_YAW)
+                                     ? GimbalController_GetYawDeg(&s_gimbal)
+                                     : GimbalController_GetPitchDeg(&s_gimbal));
+        } else if (event.command != BT_CMD_NONE) {
+            s_bt_cmd = event.command;
             s_bt_hold = (uint8_t)GIMBAL_BT_CMD_HOLD_FRAMES;
-            GimbalTask_EchoCommand(command);
+            GimbalTask_EchoCommand(event.command);
         }
     }
 
