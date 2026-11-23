@@ -38,6 +38,18 @@ typedef struct {
     uint8_t command;            /* 0 = 无命令；1/2/3 = mode1/mode2/stop（见 bt_command.h） */
 } LinkPayload_t;
 
+/* 帧类型：状态帧（现有）与调参请求/应答（新增） */
+#define LINK_TYPE_STATUS      0x02U
+#define LINK_TYPE_PARAM_SET   0x03U
+#define LINK_TYPE_PARAM_ACK   0x04U
+
+/* 调参操作码：写在 0x03 帧的第 8 字节 */
+#define LINK_PARAM_OP_SET     0U    /* 改值 */
+#define LINK_PARAM_OP_GET     1U    /* 只读回当前值 */
+#define LINK_PARAM_OP_RESET   2U    /* 恢复编译期默认值（底盘回 id=0xFFFF） */
+#define LINK_PARAM_OP_TOGGLE  3U    /* 切换 A2（参数存 Flash）开关，id 固定 13 */
+#define LINK_PARAM_OP_SAVE    4U    /* 参数写进 Flash，结果在应答值里 */
+
 /* 初始化链路的 BSP 串口 */
 void LinkProtocol_Init(void);
 
@@ -48,5 +60,16 @@ void LinkProtocol_Init(void);
  * @note 阻塞发送约 1.1 ms（13 字节 @115200），调用方必须节流。
  */
 void LinkProtocol_Send(const LinkPayload_t *payload);
+
+/**
+ * @brief 发一帧调参请求（type = 0x03）到循迹板。
+ * @param param_id 参数编号（0~63）
+ * @param value    新值（OP_SET 时有效；OP_GET 时忽略）
+ * @param op       LINK_PARAM_OP_SET / LINK_PARAM_OP_GET
+ *
+ * @note 非阻塞（走 TX 环缓），每帧 13 字节 @115200 约 1.1 ms。
+ */
+void LinkProtocol_SendParam(uint16_t param_id, int16_t value, uint8_t op);
+
 
 #endif /* LINK_PROTOCOL_H */

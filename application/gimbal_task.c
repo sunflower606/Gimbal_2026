@@ -1,10 +1,17 @@
 #include "gimbal_task.h"
 
+#include "param_table.h"
+
+static void GimbalTask_EchoParamAck(uint16_t id, int16_t value, uint8_t error_code);
+static void GimbalTask_ForwardChassisText(void);
+
+
 #include <stddef.h>
 #include <stdio.h>
 
 #include "bsp_bt_uart.h"
 #include "bt_command.h"
+#include "buzzer.h"
 #include "bsp_servo_pwm.h"
 #include "bsp_uart_link.h"
 #include "Delay.h"
@@ -80,16 +87,54 @@ static void GimbalTask_RefreshDisplay(const VisionFrame_t *frame)
  * 每拍最多搬 64 字节：一是给控制环设上限（即使缓冲里堆了几行也不会一次搬太久），
  * 二是入队本身是非阻塞的，真正的串口搬运由 TXE 中断完成，不会拖慢舵机。
  * ------------------------------------------------------------------------- */
+static uint8_t s_bin_len = 0U;
+static uint8_t s_bin_buf[13];
+
 static void GimbalTask_ForwardChassisText(void)
 {
     uint16_t budget = 64U;
 
-    while (budget > 0U && BSP_Link_GetRxCount() > 0U) {
-        if (BSP_BT_SendByte(BSP_Link_ReadByte()) == 0U) {
-            /* 蓝牙队列满（没连上、或电脑没在读）：丢掉这一个字节继续，
-             * 绝不阻塞 —— 日志丢了无所谓，舵机不能卡。 */
-        }
+    while ((budget > 0U) && (BSP_Link_GetRxCount() > 0U)) {
+        uint8_t byte = BSP_Link_ReadByte();
+
         budget--;
+
+        /* 串口上混着两种东西：ASCII 调试文本（'C:' 开头）与 13 字节二进制帧
+         * （0xAA 开头，含调参应答 0x04）。按首字节分流：
+         * 不在帧内、首字节也不是 0xAA，就当文本原样转发。 */
+        if ((s_bin_len == 0U) && (byte != 0xAAU)) {
+            (void)BSP_BT_SendByte(byte);   /* 队列满就丢，绝不阻塞 */
+            continue;
+        }
+
+        s_bin_buf[s_bin_len] = byte;
+        s_bin_len++;
+
+        if (s_bin_len >= 13U) {
+            uint8_t i;
+            uint8_t sum = 0U;
+
+            for (i = 0U; i < 12U; i++) {
+                sum ^= s_bin_buf[i];
+            }
+
+            if ((s_bin_buf[1] == 0x55U) && (sum == s_bin_buf[12])) {
+                if (s_bin_buf[2] == 0x04U) {
+                    /* 调参应答：转成 "SG:6" 这样的文本回给手机 */
+                    uint16_t ack_id =
+                        (uint16_t)(((uint16_t)s_bin_buf[4] << 8) | s_bin_buf[5]);
+                    int16_t ack_value =
+                        (int16_t)(((uint16_t)s_bin_buf[6] << 8) | s_bin_buf[7]);
+
+                    GimbalTask_EchoParamAck(ack_id, ack_value, s_bin_buf[9]);
+                } else if (s_bin_buf[2] == 0x05U) {
+                    /* 提示音指令：蜂鸣器在本板，直接播第 8 字节指定的音型 */
+                    Buzzer_Play((BuzzerPattern_t)s_bin_buf[8]);
+                }
+            }
+
+            s_bin_len = 0U;
+        }
     }
 }
 
@@ -117,6 +162,9 @@ void GimbalTask_Init(void)
     /* 3.6) 蓝牙透传串口（USART3：PB10 -> 模块 RXD、PB11 <- 模块 TXD） */
     BSP_BT_Init();
     BtCommand_Init();
+
+    /* 3.7) 蜂鸣器（PB4，有源，上电静音） */
+    Buzzer_Init();
 
     /* 4) 控制器参数与状态，并摆到行程中点 */
     GimbalController_Init(&s_gimbal);
@@ -173,6 +221,54 @@ static void GimbalTask_EchoAngle(BtCommand_t command, float angle_deg)
     }
 }
 
+/* ---------------------------------------------- 内部：参数应答回执 --------
+ * 循迹板改完参数会回一帧 0x04，这里翻译成一行短文本：
+ *   成功： "SG:6"          现在的值
+ *   失败： "ERR:2"         1 编号错 / 2 超范围 / 3 只读 / 4 未就绪
+ *   复位： "RESET OK"
+ * 一行放下是刻意的：手机屏小，长回执会被截断。
+ * --------------------------------------------------------------------- */
+static void GimbalTask_EchoParamAck(uint16_t id, int16_t value, uint8_t error_code)
+{
+    char text[24];
+    int len;
+
+    if (error_code != 0U) {
+        len = snprintf(text, sizeof(text), "ERR:%u\r\n", (unsigned)error_code);
+    } else if (id == 0xFFFFU) {
+        len = snprintf(text, sizeof(text), "RESET OK\r\n");
+    } else if (id == 0xFFFEU) {
+        /* 存盘结果：value = 1 成功 */
+        len = snprintf(text, sizeof(text), "SAVED\r\n");
+        if (value == 0) {
+            len = snprintf(text, sizeof(text), "ERR:4 a2off\r\n");
+        }
+    } else if (id == 13U) {
+        /* A2 状态用 ON/OFF 更好读，不显示 1/0 */
+        len = snprintf(text, sizeof(text), (value != 0) ? "A2:ON\r\n" : "A2:OFF\r\n");
+    } else {
+        const ParamName_t *item = NULL;
+        uint8_t i;
+
+        for (i = 0U; i < ParamTable_Count(); i++) {
+            if (ParamTable_At(i)->id == id) {
+                item = ParamTable_At(i);
+                break;
+            }
+        }
+
+        if (item != NULL) {
+            len = snprintf(text, sizeof(text), "%s:%d\r\n", item->name, (int)value);
+        } else {
+            len = snprintf(text, sizeof(text), "ID%u:%d\r\n", (unsigned)id, (int)value);
+        }
+    }
+
+    if (len > 0) {
+        (void)BSP_BT_SendBuffer((const uint8_t *)text, (uint16_t)len);
+    }
+}
+
 void GimbalTask_Loop(void)
 {
     VisionFrame_t frame;
@@ -202,6 +298,51 @@ void GimbalTask_Loop(void)
                                  (event.command == BT_CMD_YAW)
                                      ? GimbalController_GetYawDeg(&s_gimbal)
                                      : GimbalController_GetPitchDeg(&s_gimbal));
+        } else if ((event.command == BT_CMD_SET) || (event.command == BT_CMD_GET)) {
+            /* 参数命令：先在本地的短名表里换成参数号，再交给链路层发 0x03。
+             * 名字不认识就直接回 ERR:1，不用等底盘再回一趟。 */
+            uint16_t param_id = ParamTable_Find(event.name);
+
+            if (param_id == 0xFFFFU) {
+                (void)BSP_BT_SendBuffer((const uint8_t *)"ERR:1 id\r\n", 10U);
+            } else if (event.command == BT_CMD_SET) {
+                LinkProtocol_SendParam(param_id, (int16_t)event.argument,
+                                       LINK_PARAM_OP_SET);
+            } else {
+                LinkProtocol_SendParam(param_id, 0, LINK_PARAM_OP_GET);
+            }
+        } else if (event.command == BT_CMD_DUMP) {
+            /* 逐个参数发一问一答：底盘会把 13 帧应答依次回过来，
+             * 蓝牙这边逐行打印。13 帧约 1.5 ms 发完，不阻塞控制。 */
+            uint8_t i;
+
+            for (i = 0U; i < ParamTable_Count(); i++) {
+                LinkProtocol_SendParam(ParamTable_At(i)->id, 0, LINK_PARAM_OP_GET);
+            }
+        } else if (event.command == BT_CMD_RESET) {
+            LinkProtocol_SendParam(0U, 0, LINK_PARAM_OP_RESET);
+        } else if (event.command == BT_CMD_SAVE) {
+            /* A2：把参数写进循迹板 Flash。是否允许由底盘那边的 A2 开关决定，
+             * 没开会回错误码 4，这里就不用重复判断。 */
+            LinkProtocol_SendParam(0U, 0, LINK_PARAM_OP_SAVE);
+        } else if (event.command == BT_CMD_A2) {
+            /* 单字符 f：切换 A2 开关，底盘把切换后的状态放在应答值里 */
+            LinkProtocol_SendParam(13U, 0, LINK_PARAM_OP_TOGGLE);
+        } else if (event.command == BT_CMD_BEEPER) {
+            /* 蜂鸣器开关（本板本地操作，不跨板、不发帧）
+             *   argument = 1 → 开，0 → 关，-1 → 只查询不改状态
+             * 这个开关只影响本次上电；掉电后仍由 GIMBAL_BUZZER_ENABLE 决定。 */
+            char text[24];
+            int len;
+
+            if (event.argument >= 0.0f) {
+                Buzzer_SetEnabled((event.argument >= 0.5f) ? 1U : 0U);
+            }
+            len = snprintf(text, sizeof(text), "BZ:%s\r\n",
+                           (Buzzer_IsEnabled() != 0U) ? "ON" : "OFF");
+            if (len > 0) {
+                (void)BSP_BT_SendBuffer((const uint8_t *)text, (uint16_t)len);
+            }
         } else if (event.command != BT_CMD_NONE) {
             s_bt_cmd = event.command;
             s_bt_hold = (uint8_t)GIMBAL_BT_CMD_HOLD_FRAMES;
@@ -261,4 +402,9 @@ void GimbalTask_Loop(void)
     /* ---------- 6. 把循迹板发来的调试文本转发给蓝牙 ----------
      * 转发放在最后：它只做入队（几十纳秒），不影响上面任何一步的时序。 */
     GimbalTask_ForwardChassisText();
+
+    /* ---------- 7. 蜂鸣器节奏推进 ----------
+     * 每 10 ms 走一小步（响/停切换），绝不阻塞 ——
+     * 长鸣 1 s 也是分 100 次走完的，不会卡住舵机控制。 */
+    Buzzer_Step();
 }

@@ -21,6 +21,11 @@
  *   stop  / s         -> 3  停车（下发给循迹板，锁存到位再发 mode）
  *   yaw 100 / yaw100  -> 4  云台 yaw 转到 100 度（本板执行，不下发）
  *   pitch 75          -> 5  云台 pitch 转到 75 度（本板执行，不下发）
+ *   set <名字> <值>   -> 6  改循迹板参数，转发成 0x03 帧（例 set sg 6）
+ *   get <名字>        -> 7  读一个参数（例 get sg）
+ *   dump              -> 8  列出全部参数
+ *   save              -> 9  存 Flash（A2，暂回"未支持"）
+ *   reset             -> 10 恢复出厂默认值
  *   命令后面不带数字（只发 yaw）视为无效，不会动云台。
  * ========================================================================== */
 
@@ -33,13 +38,21 @@ typedef enum {
     BT_CMD_MODE2 = 2,   /* 切模式 2：跟随 */
     BT_CMD_STOP = 3,    /* 停车（锁存） */
     BT_CMD_YAW = 4,     /* 设置 yaw 角度，带参数 */
-    BT_CMD_PITCH = 5    /* 设置 pitch 角度，带参数 */
+    BT_CMD_PITCH = 5,   /* 设置 pitch 角度，带参数 */
+    BT_CMD_SET = 6,     /* set <名字> <值>：改循迹板上的参数 */
+    BT_CMD_GET = 7,     /* get <名字>：读一个参数 */
+    BT_CMD_DUMP = 8,    /* dump：列出全部参数 */
+    BT_CMD_SAVE = 9,    /* save：参数存 Flash（A2 功能，暂未实现） */
+    BT_CMD_RESET = 10,  /* reset：参数恢复默认 */
+    BT_CMD_A2 = 11,     /* f（单个字符）：切换「参数存 Flash」开关 */
+    BT_CMD_BEEPER = 12  /* bz on|off|（空）：蜂鸣器开关 / 查询 */
 } BtCommand_t;
 
 /** @brief 一条命令 + 它的参数（只有 yaw/pitch 用得到参数）。 */
 typedef struct {
     BtCommand_t command;    /* 命令码；BT_CMD_NONE 表示这一拍没新命令 */
-    float argument;         /* 角度参数，单位 度；其它命令恒为 0 */
+    float argument;         /* 角度（yaw/pitch）或数值（set），其它命令恒为 0 */
+    char name[8];           /* set/get 的参数短名（大写），其它命令为空串 */
 } BtCommandEvent_t;
 
 /* 清空行缓冲（上电调用一次） */

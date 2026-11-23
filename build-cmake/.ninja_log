@@ -1,10 +1,10 @@
 # ninja log v7
 10	132	8163628902816615	CMakeFiles/Gimbal_2026.dir/startup_stm32f10x_md.s.obj	dfd89d5ae0325812
-18	113	8168497240043466	CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj	dc8ab139789aeacf
-52	156	8165295113468951	CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj	33a081dbd1075add
-34	147	8168497240206081	CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj	a31be02b51aeb41
-28	140	8168497240156905	CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj	17f4e18c080e4ce6
-24	149	8168497240115251	CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj	f951c9e101de11ca
+3	111	8169547387690830	CMakeFiles/Gimbal_2026.dir/Core/Src/main.c.obj	dc8ab139789aeacf
+15	88	8168833301713030	CMakeFiles/Gimbal_2026.dir/modules/link_protocol.c.obj	33a081dbd1075add
+28	135	8169547387953274	CMakeFiles/Gimbal_2026.dir/application/gimbal_task.c.obj	a31be02b51aeb41
+14	122	8169547387794961	CMakeFiles/Gimbal_2026.dir/modules/gimbal_controller.c.obj	17f4e18c080e4ce6
+8	121	8169547387750904	CMakeFiles/Gimbal_2026.dir/modules/vision_protocol.c.obj	f951c9e101de11ca
 80	353	8163628903525499	CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart_link.c.obj	fdf3cb898d15c3e8
 66	354	8163628903382508	CMakeFiles/Gimbal_2026.dir/bsp/bsp_servo_pwm.c.obj	838a8b3e736037ff
 34	268	8163628903063237	CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_gpio.c.obj	4c997bb574b80b62
@@ -18,7 +18,12 @@
 60	355	8163628903327770	CMakeFiles/Gimbal_2026.dir/bsp/bsp_uart.c.obj	cdb431c548f18429
 109	355	8163628903817328	CMakeFiles/Gimbal_2026.dir/modules/oled.c.obj	a68e69435faab485
 44	357	8163628903162691	CMakeFiles/Gimbal_2026.dir/Drivers/STM32F10x_StdPeriph_Driver/src/stm32f10x_tim.c.obj	36a5e5b90f0e65a3
-149	379	8168497241358624	Gimbal_2026.elf	46c8605209f28e8a
+74	265	8169672879294238	Gimbal_2026.elf	a8c14d1f7c3edbc9
 34	185	8165295113288599	CMakeFiles/Gimbal_2026.dir/bsp/bsp_bt_uart.c.obj	f22a0e877b493ed7
 14	31	8163628902470182	clean	626b62239cdfb7ee
-8	635	8167751597124553	CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj	f51945568b8a47cd
+19	121	8169547387856146	CMakeFiles/Gimbal_2026.dir/modules/bt_command.c.obj	f51945568b8a47cd
+4	73	8169672878594070	CMakeFiles/Gimbal_2026.dir/modules/param_table.c.obj	afde19ab18a5f934
+26	127	8169675725547470	build.ninja	ba69c423c3705e11
+26	127	8169675725508978	D:/Microsoft VS code/Projects/LabProject_2026/Gimbal_2026/build-cmake/cmake_install.cmake	ba69c423c3705e11
+23	120	8169547387889614	CMakeFiles/Gimbal_2026.dir/modules/buzzer.c.obj	576d3992e372f6fe
+18	149	8169646066170896	CMakeFiles/Gimbal_2026.dir/bsp/bsp_buzzer.c.obj	84e5b5aa2bb6de2

@@ -70,3 +70,42 @@ void LinkProtocol_Send(const LinkPayload_t *payload)
 
     BSP_Link_SendBuffer(frame, LINK_FRAME_LEN);
 }
+
+/* ============================================================================
+ * 调参帧（type = 0x03 请求 / 0x04 应答）
+ *
+ * 为什么需要这两种帧：原来的 0x02 只从云台流向前循迹板、只装状态。
+ * 调参是一次来回对话，循迹板必须能回话，所以加了一对请求/应答帧。
+ * 长度仍是 13 字节，与状态帧同一个骨架，只有 type 不同。
+ *
+ * 0x03：4-5 参数号，6-7 新值，8 操作码（0 设置 / 1 读取），9-11 保留
+ * 0x04：4-5 参数号，6-7 当前值，8 保留，9 错误码，10-11 保留
+ * ========================================================================== */
+
+/* 接收滑窗：13 字节，收到一帧就校验一次 */
+
+void LinkProtocol_SendParam(uint16_t param_id, int16_t value, uint8_t op)
+{
+    uint8_t frame[LINK_FRAME_LEN];
+    uint8_t checksum = 0U;
+    uint8_t i;
+
+    frame[0] = LINK_HEAD_0;
+    frame[1] = LINK_HEAD_1;
+    frame[2] = LINK_TYPE_PARAM_SET;
+    frame[3] = LINK_LENGTH;
+    LinkProtocol_WriteUint16(frame, 4U, param_id);
+    LinkProtocol_WriteInt16(frame, 6U, value);
+    frame[8] = op;
+    frame[9] = 0U;
+    frame[10] = 0U;
+    frame[11] = 0U;
+
+    for (i = 0U; i < LINK_CHECKSUM_INDEX; i++) {
+        checksum ^= frame[i];
+    }
+    frame[LINK_CHECKSUM_INDEX] = checksum;
+
+    BSP_Link_SendBuffer(frame, LINK_FRAME_LEN);
+}
+
