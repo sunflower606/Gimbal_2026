@@ -130,6 +130,10 @@ static void GimbalTask_ForwardChassisText(void)
                 } else if (s_bin_buf[2] == 0x05U) {
                     /* 提示音指令：蜂鸣器在本板，直接播第 8 字节指定的音型 */
                     Buzzer_Play((BuzzerPattern_t)s_bin_buf[8]);
+                } else if (s_bin_buf[2] == 0x06U) {
+                    /* 底盘模式上报（2026-11-23）：第 8 字节 = 0 循迹 / 1 跟随 / 2 停。
+                     * 只用来决定"丢人后要不要扫视"，不参与角度控制。 */
+                    GimbalController_SetChassisMode(&s_gimbal, s_bin_buf[8]);
                 }
             }
 
@@ -325,6 +329,10 @@ void GimbalTask_Loop(void)
             /* A2：把参数写进循迹板 Flash。是否允许由底盘那边的 A2 开关决定，
              * 没开会回错误码 4，这里就不用重复判断。 */
             LinkProtocol_SendParam(0U, 0, LINK_PARAM_OP_SAVE);
+        } else if (event.command == BT_CMD_BB) {
+            /* 导出黑匣子：id 0xFFFD 是"导出"专用号，底盘收到就逐行回 ASCII 文本，
+             * 那些文本会由解复用器原样转给蓝牙（不会混进 0xAA 二进制帧）。 */
+            LinkProtocol_SendParam(0xFFFDU, 0, LINK_PARAM_OP_DUMP);
         } else if (event.command == BT_CMD_A2) {
             /* 单字符 f：切换 A2 开关，底盘把切换后的状态放在应答值里 */
             LinkProtocol_SendParam(13U, 0, LINK_PARAM_OP_TOGGLE);

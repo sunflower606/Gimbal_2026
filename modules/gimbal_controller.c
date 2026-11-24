@@ -82,6 +82,8 @@ void GimbalController_Init(GimbalController_t *ctrl)
     ctrl->integ_y = 0.0f;
     ctrl->last_error_x = 0.0f;
     ctrl->last_error_y = 0.0f;
+    ctrl->pending_yaw = 0.0f;
+    ctrl->pending_pitch = 0.0f;
     ctrl->tracking = 0U;
 
     /* 限位反向扫视状态（2026-11-19） */
@@ -94,6 +96,8 @@ void GimbalController_Init(GimbalController_t *ctrl)
     ctrl->boot_ms = 0U;
     ctrl->vision_seen = 0U;
     ctrl->target_seen = 0U;
+    ctrl->chassis_mode = GIMBAL_CHASSIS_MODE_STOP;   /* 未上报前按"停"处理 */
+    ctrl->mode_seen = 0U;
 
     /* 角度先夹一次，保证 config 里写错行程也不会越界 */
     ctrl->yaw_angle_deg = GimbalController_Clamp(ctrl->yaw_angle_deg,
@@ -102,6 +106,12 @@ void GimbalController_Init(GimbalController_t *ctrl)
                                                    ctrl->pitch_min_deg, ctrl->pitch_max_deg);
 
     GimbalController_ApplyOutput(ctrl);
+}
+
+void GimbalController_SetChassisMode(GimbalController_t *ctrl, uint8_t mode)
+{
+    ctrl->chassis_mode = mode;
+    ctrl->mode_seen = 1U;
 }
 
 void GimbalController_SetAngle(GimbalController_t *ctrl, float yaw_deg, float pitch_deg)
@@ -162,6 +172,14 @@ static void GimbalController_SweepStep(GimbalController_t *ctrl)
     }
     if ((GIMBAL_SWEEP_NEED_TARGET != 0U) && (ctrl->target_seen == 0U)) {
         return;                     /* 闸门 2：从没跟到过人，不存在"找人" */
+    }
+    /* 闸门 3（2026-11-23）：只在模式 1（循迹）下扫。
+     * 模式 2 由车转身找人，云台扫视反而把偏角搅乱；STOP 时扫视纯属白耗。
+     * 没收到过底盘上报也一律不扫（宁可不动，也不要乱扫）。 */
+    if (GIMBAL_SWEEP_MODE_ONLY != 0U) {
+        if ((ctrl->mode_seen == 0U) || (ctrl->chassis_mode != GIMBAL_CHASSIS_MODE_LINE)) {
+            return;
+        }
     }
 
     /* ---------------- 待触发：两种触发条件 ---------------- */
@@ -276,6 +294,9 @@ void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *fram
      * 保持不动就永远等不到人 —— 这时改成"顶到限位就往反方向扫"。 */
     if (Vision_IsTargetFresh((uint16_t)GIMBAL_LOSE_TIMEOUT_MS) == 0U || frame == NULL) {
         ctrl->tracking = 0U;
+        /* 丢人时清掉未发出的零头，避免重新捕获的瞬间把攒的旧量一次性放出去 */
+        ctrl->pending_yaw = 0.0f;
+        ctrl->pending_pitch = 0.0f;
         GimbalController_SweepStep(ctrl);
         GimbalController_ApplyOutput(ctrl);
         return;
@@ -339,6 +360,30 @@ void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *fram
         float dpitch = u_y * ctrl->deg_per_unit_y;
         const float yaw_step = GIMBAL_YAW_RATE_MAX_DEG_S * ctrl->dt_s;
         const float pitch_step = GIMBAL_PITCH_RATE_MAX_DEG_S * ctrl->dt_s;
+
+        /* 输出死区（累积式，2026-11-23 新增，见 config 里 GIMBAL_OUT_DEAD_ZONE_DEG）
+         * 小于阈值的增量先攒着，攒够一次再发：
+         *   抖动（正负交替）永远攒不够 -> 云台不动；
+         *   真实偏差（同向）攒够就发 -> 不留稳态误差。 */
+        if (GIMBAL_OUT_DEAD_ZONE_DEG > 0.0f) {
+            ctrl->pending_yaw += dyaw;
+            if ((ctrl->pending_yaw >= GIMBAL_OUT_DEAD_ZONE_DEG) ||
+                (ctrl->pending_yaw <= -GIMBAL_OUT_DEAD_ZONE_DEG)) {
+                dyaw = ctrl->pending_yaw;
+                ctrl->pending_yaw = 0.0f;
+            } else {
+                dyaw = 0.0f;
+            }
+
+            ctrl->pending_pitch += dpitch;
+            if ((ctrl->pending_pitch >= GIMBAL_OUT_DEAD_ZONE_DEG) ||
+                (ctrl->pending_pitch <= -GIMBAL_OUT_DEAD_ZONE_DEG)) {
+                dpitch = ctrl->pending_pitch;
+                ctrl->pending_pitch = 0.0f;
+            } else {
+                dpitch = 0.0f;
+            }
+        }
 
         if (dyaw > yaw_step) {
             dyaw = yaw_step;

@@ -49,6 +49,7 @@ typedef struct {
 #define LINK_PARAM_OP_RESET   2U    /* 恢复编译期默认值（底盘回 id=0xFFFF） */
 #define LINK_PARAM_OP_TOGGLE  3U    /* 切换 A2（参数存 Flash）开关，id 固定 13 */
 #define LINK_PARAM_OP_SAVE    4U    /* 参数写进 Flash，结果在应答值里 */
+#define LINK_PARAM_OP_DUMP    5U    /* 导出黑匣子：底盘逐行回 ASCII 文本 */
 
 /* 初始化链路的 BSP 串口 */
 void LinkProtocol_Init(void);

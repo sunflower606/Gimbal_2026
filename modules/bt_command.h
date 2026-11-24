@@ -45,7 +45,8 @@ typedef enum {
     BT_CMD_SAVE = 9,    /* save：参数存 Flash（A2 功能，暂未实现） */
     BT_CMD_RESET = 10,  /* reset：参数恢复默认 */
     BT_CMD_A2 = 11,     /* f（单个字符）：切换「参数存 Flash」开关 */
-    BT_CMD_BEEPER = 12  /* bz on|off|（空）：蜂鸣器开关 / 查询 */
+    BT_CMD_BEEPER = 12, /* bz on|off|（空）：蜂鸣器开关 / 查询 */
+    BT_CMD_BB = 13      /* bb：导出循迹板里的黑匣子日志 */
 } BtCommand_t;
 
 /** @brief 一条命令 + 它的参数（只有 yaw/pitch 用得到参数）。 */

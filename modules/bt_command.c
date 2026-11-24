@@ -187,6 +187,12 @@ static BtCommand_t BtCommand_ParseParamCmd(const char *line)
 
     /* 蜂鸣器开关：bz on / bz off / bz（只查询）。
      * 蜂鸣器就在本板 PB4 上，所以这条命令不需要跨板，发帧反而是浪费。 */
+    rest = BtCommand_MatchWord(p, "BB");
+    if (rest != NULL) {
+        s_parse_arg = 0.0f;
+        return BT_CMD_BB;
+    }
+
     rest = BtCommand_MatchWord(p, "BZ");
     if (rest != NULL) {
         const char *arg = BtCommand_SkipSpace(rest);

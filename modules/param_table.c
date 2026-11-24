@@ -22,7 +22,8 @@ static const ParamName_t s_table[] = {
     { "LS",  14U,  "percent" },
     { "LH",  15U,  "ms" },
     { "LKD", 16U,  "permille" },
-    { "CRS", 17U,  "ms" }
+    { "CRS", 17U,  "ms" },
+    { "WAVE", 18U, "0/1" }
 };
 
 #define PARAM_TABLE_COUNT   ((uint8_t)(sizeof(s_table) / sizeof(s_table[0])))

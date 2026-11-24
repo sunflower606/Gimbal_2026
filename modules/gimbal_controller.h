@@ -60,6 +60,8 @@ typedef struct {
     float integ_y;              /* 垂直积分累加，单位：归一化偏差 */
     float last_error_x;         /* 上一拍水平偏差（已过死区） */
     float last_error_y;         /* 上一拍垂直偏差（已过死区） */
+    float pending_yaw;          /* 输出死区：未发出的 yaw 增量，单位 度 */
+    float pending_pitch;        /* 输出死区：未发出的 pitch 增量，单位 度 */
     uint8_t tracking;           /* 1 = 正在跟踪；0 = 目标丢失 */
 
     /* ------------------------- 限位反向扫视（2026-11-19，模式 1 兜底） ----
@@ -74,6 +76,8 @@ typedef struct {
     uint32_t boot_ms;           /* 上电后累计运行时间，ms（上电静默用） */
     uint8_t vision_seen;        /* 1 = 收到过至少一帧（摄像头已上线） */
     uint8_t target_seen;        /* 1 = 曾经成功跟踪到人（扫视前置条件） */
+    uint8_t chassis_mode;       /* 底盘上报的模式码（0 循迹 / 1 跟随 / 2 停） */
+    uint8_t mode_seen;          /* 1 = 收到过模式上报帧（没收到过就不扫） */
 } GimbalController_t;
 
 /**
@@ -98,6 +102,12 @@ void GimbalController_Update(GimbalController_t *ctrl, const VisionFrame_t *fram
  * @param pitch_deg 目标 pitch 角，单位 度，超出行程会被夹住。
  */
 void GimbalController_SetAngle(GimbalController_t *ctrl, float yaw_deg, float pitch_deg);
+
+/**
+ * @brief 底盘模式上报（0x06 帧，第 8 字节 = 模式码）。
+ *        只影响"丢人后要不要扫视"，不参与角度控制。
+ */
+void GimbalController_SetChassisMode(GimbalController_t *ctrl, uint8_t mode);
 
 /** @brief 按当前角度输出一次 PWM（不改变状态）。 */
 void GimbalController_Output(const GimbalController_t *ctrl);
